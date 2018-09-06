@@ -134,7 +134,6 @@
 		91ADC72321407DA900946C92 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				91ADC72621408A8F00946C92 /* InfiniteScrollingBackground.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -142,6 +141,7 @@
 		91ADC72421407DB000946C92 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				91ADC72621408A8F00946C92 /* InfiniteScrollingBackground.swift */,
 				913183A821308968009A6CF0 /* GameScene.sks */,
 				913183AA21308968009A6CF0 /* Actions.sks */,
 				913183B021308968009A6CF0 /* Main.storyboard */,

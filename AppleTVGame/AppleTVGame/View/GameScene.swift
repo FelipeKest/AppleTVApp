@@ -13,6 +13,7 @@ class GameScene: SKScene {
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
+    var scroller: InfiniteScrollingBackground?
     
     override func didMove(to view: SKView) {
         
@@ -35,23 +36,27 @@ class GameScene: SKScene {
                                               SKAction.fadeOut(withDuration: 0.5),
                                               SKAction.removeFromParent()]))
         }
+        
+        let images = [UIImage(named: "bgImage1")!, UIImage(named: "bgImage2")!]
+        
+        // Initializing InfiniteScrollingBackground's Instance:
+        scroller = InfiniteScrollingBackground(images: images, scene: self, scrollDirection: .left, speed: 10)
+        
+        // Using it:
+        scroller?.scroll()
+        
+        // (Optional) Changing the instance's zPosition:
+        scroller?.zPosition = 1
+
     }
     
     
     func touchDown(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.green
-            self.addChild(n)
-        }
+        scroller?.stopScroll()
     }
     
     func touchMoved(toPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.blue
-            self.addChild(n)
-        }
+      
     }
     
     func touchUp(atPoint pos : CGPoint) {

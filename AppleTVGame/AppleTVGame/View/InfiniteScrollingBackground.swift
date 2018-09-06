@@ -156,19 +156,10 @@ class InfiniteScrollingBackground {
     }
     
     //Para o scroll das telas
-    static func stopScroll(sprite:[SKSpriteNode]) -> Bool{
-        let numberOfSprites = sprite.count
-        var numEndedActions: Int = 0
+    public func stopScroll(){
+        let numberOfSprites = sprites.count
         for index in 0...numberOfSprites - 1 {
-            sprite[index].removeAllActions()
-            if sprite[index].hasActions() == false {
-                numEndedActions += 1
-            }
-        }
-        if numEndedActions == numberOfSprites {
-            return true
-        } else {
-            return false
+            sprites[index].removeAllActions()
         }
     }
     
