@@ -36,11 +36,11 @@ class GameScene: SKScene {
                                               SKAction.fadeOut(withDuration: 0.5),
                                               SKAction.removeFromParent()]))
         }
-        
-        let images = [UIImage(named: "bgImage1")!, UIImage(named: "bgImage2")!]
+        //define quais imagens são utilizadas no background
+        let backgroundimages = [UIImage(named: "bg_1")!, UIImage(named: "bg_2")!]
         
         // Initializing InfiniteScrollingBackground's Instance:
-        scroller = InfiniteScrollingBackground(images: images, scene: self, scrollDirection: .left, speed: 10)
+        scroller = InfiniteScrollingBackground(images: backgroundimages, scene: self, scrollDirection: .left, speed: 10)
         
         // Using it:
         scroller?.scroll()
