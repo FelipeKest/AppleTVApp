@@ -104,7 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				913183A621308967009A6CF0 /* AppDelegate.swift */,
-				91ADC72321407DA900946C92 /* Model */,
 				91ADC72421407DB000946C92 /* View */,
 				91ADC72521407DB500946C92 /* Controller */,
 				913183B32130896A009A6CF0 /* Assets.xcassets */,
@@ -129,13 +128,6 @@
 				913183CB2130896A009A6CF0 /* Info.plist */,
 			);
 			path = AppleTVGameUITests;
-			sourceTree = "<group>";
-		};
-		91ADC72321407DA900946C92 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		91ADC72421407DB000946C92 /* View */ = {
