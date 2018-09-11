@@ -9,6 +9,13 @@
 import UIKit
 import SpriteKit
 
-class Student: SKSpriteNode {
+class Student {
+    public var vidaAluno: Int
+    var studentImages: [UIImage]
+    
+    init(life: Int, imagensEstudante: [UIImage]) {
+        self.vidaAluno = life
+        self.studentImages = imagensEstudante
+    }
     
 }

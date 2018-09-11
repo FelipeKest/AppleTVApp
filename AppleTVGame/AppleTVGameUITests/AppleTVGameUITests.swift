@@ -32,12 +32,5 @@ class AppleTVGameUITests: XCTestCase {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-    
-    func testStopAction(){
-        let imagens: [UIImage] = [UIImage(named: "blackBG")!, UIImage(named: "whiteBG")!]
-        let infiniteScrollBg = InfiniteScrollingBackground(images: imagens, scene: GameScene(), scrollDirection: InfiniteScrollingBackground.ScrollDirection.left, speed: 2.0)
-    
-        
-    }
 
 }

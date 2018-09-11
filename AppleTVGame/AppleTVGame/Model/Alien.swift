@@ -8,7 +8,15 @@
 
 import UIKit
 import SpriteKit
+import AVFoundation
 
-class Alien: SKSpriteNode {
+class Alien {
+    public var vidaAlien: Int
+    var alienImage: UIImage
+    var alienSound: AVAudioPlayer?
     
+    init(life: Int, imagemAlien: UIImage) {
+        self.vidaAlien = life
+        self.alienImage = imagemAlien
+    }
 }
