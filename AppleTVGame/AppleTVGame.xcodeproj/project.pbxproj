@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9118ACE02146E525000693DD /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9118ACDF2146E525000693DD /* Student.swift */; };
-		9118ACE22146E551000693DD /* Alien.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9118ACE12146E551000693DD /* Alien.swift */; };
-		9118ACE42146ED57000693DD /* Attack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9118ACE32146ED57000693DD /* Attack.swift */; };
+		9118ACE8214876DD000693DD /* Alien.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9118ACE5214876DD000693DD /* Alien.swift */; };
+		9118ACE9214876DD000693DD /* Attack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9118ACE6214876DD000693DD /* Attack.swift */; };
+		9118ACEA214876DD000693DD /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9118ACE7214876DD000693DD /* Student.swift */; };
+		9118ACEC21487717000693DD /* HitBeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9118ACEB21487717000693DD /* HitBeam.swift */; };
 		913183A721308967009A6CF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913183A621308967009A6CF0 /* AppDelegate.swift */; };
 		913183A921308968009A6CF0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 913183A821308968009A6CF0 /* GameScene.sks */; };
 		913183AB21308968009A6CF0 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 913183AA21308968009A6CF0 /* Actions.sks */; };
@@ -40,9 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9118ACDF2146E525000693DD /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
-		9118ACE12146E551000693DD /* Alien.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alien.swift; sourceTree = "<group>"; };
-		9118ACE32146ED57000693DD /* Attack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
+		9118ACE5214876DD000693DD /* Alien.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alien.swift; sourceTree = "<group>"; };
+		9118ACE6214876DD000693DD /* Attack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
+		9118ACE7214876DD000693DD /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		9118ACEB21487717000693DD /* HitBeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitBeam.swift; sourceTree = "<group>"; };
 		913183A321308967009A6CF0 /* AppleTVGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleTVGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		913183A621308967009A6CF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; usesTabs = 0; };
 		913183A821308968009A6CF0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -89,9 +91,6 @@
 		9118ACDD2146E4EC000693DD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9118ACDF2146E525000693DD /* Student.swift */,
-				9118ACE12146E551000693DD /* Alien.swift */,
-				9118ACE32146ED57000693DD /* Attack.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -151,6 +150,10 @@
 			isa = PBXGroup;
 			children = (
 				91ADC72621408A8F00946C92 /* InfiniteScrollingBackground.swift */,
+				9118ACE5214876DD000693DD /* Alien.swift */,
+				9118ACE6214876DD000693DD /* Attack.swift */,
+				9118ACEB21487717000693DD /* HitBeam.swift */,
+				9118ACE7214876DD000693DD /* Student.swift */,
 				913183A821308968009A6CF0 /* GameScene.sks */,
 				913183AA21308968009A6CF0 /* Actions.sks */,
 				913183B021308968009A6CF0 /* Main.storyboard */,
@@ -301,11 +304,12 @@
 			files = (
 				913183AD21308968009A6CF0 /* GameScene.swift in Sources */,
 				91ADC72721408A9000946C92 /* InfiniteScrollingBackground.swift in Sources */,
+				9118ACEC21487717000693DD /* HitBeam.swift in Sources */,
 				913183AF21308968009A6CF0 /* GameViewController.swift in Sources */,
-				9118ACE42146ED57000693DD /* Attack.swift in Sources */,
-				9118ACE22146E551000693DD /* Alien.swift in Sources */,
-				9118ACE02146E525000693DD /* Student.swift in Sources */,
+				9118ACEA214876DD000693DD /* Student.swift in Sources */,
 				913183A721308967009A6CF0 /* AppDelegate.swift in Sources */,
+				9118ACE8214876DD000693DD /* Alien.swift in Sources */,
+				9118ACE9214876DD000693DD /* Attack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
