@@ -12,7 +12,7 @@ import SpriteKit
 class Student:SKSpriteNode {
     let instance = Student()
     
-    var vidaAluno: Int = 3
+    var studentHealth: Float = 3
 //    var studentImages: [UIImage]  = [UIImage(named: "Student")]
     
     private init() {
@@ -23,15 +23,6 @@ class Student:SKSpriteNode {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    func attackSucceded() {
-        
-    }
-    
-    func attackFailed() {
-
     }
     
 }

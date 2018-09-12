@@ -149,13 +149,9 @@
 		91ADC72421407DB000946C92 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				91ADC72621408A8F00946C92 /* InfiniteScrollingBackground.swift */,
-				9118ACE5214876DD000693DD /* Alien.swift */,
-				9118ACE6214876DD000693DD /* Attack.swift */,
-				9118ACEB21487717000693DD /* HitBeam.swift */,
-				9118ACE7214876DD000693DD /* Student.swift */,
+				91C0A85221494A4F00495CA0 /* Characters */,
+				91C0A85321494A6300495CA0 /* Effects */,
 				913183A821308968009A6CF0 /* GameScene.sks */,
-				913183AA21308968009A6CF0 /* Actions.sks */,
 				913183B021308968009A6CF0 /* Main.storyboard */,
 				913183AC21308968009A6CF0 /* GameScene.swift */,
 			);
@@ -168,6 +164,26 @@
 				913183AE21308968009A6CF0 /* GameViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		91C0A85221494A4F00495CA0 /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				9118ACE5214876DD000693DD /* Alien.swift */,
+				9118ACE7214876DD000693DD /* Student.swift */,
+			);
+			path = Characters;
+			sourceTree = "<group>";
+		};
+		91C0A85321494A6300495CA0 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				9118ACE6214876DD000693DD /* Attack.swift */,
+				9118ACEB21487717000693DD /* HitBeam.swift */,
+				91ADC72621408A8F00946C92 /* InfiniteScrollingBackground.swift */,
+				913183AA21308968009A6CF0 /* Actions.sks */,
+			);
+			path = Effects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

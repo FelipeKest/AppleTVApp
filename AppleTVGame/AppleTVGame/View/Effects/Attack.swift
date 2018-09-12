@@ -14,18 +14,16 @@ class Attack {
     //MARK: Propriedades
  
     //MARK: Initializer
-    init(poder: Int) {
-    }
     
     //MARK: Public Functions
-    func increase(alunoLife: Int, alienLife: Int, ammount: Int) -> (newStudentLife:Int, newAlienLife: Int) {
+    func increase(alunoLife: Float, alienLife: Float, ammount: Float) -> (newStudentLife: Float, newAlienLife: Float) {
         let novaVidaAluno = alunoLife + ammount
         let novaVidaAlien = alienLife - ammount
     
         return (novaVidaAluno, novaVidaAlien)
     }
     
-    func decrease(alunoLife: Int, alienLife: Int, ammount: Int) -> (newStudentLife:Int, newAlienLife: Int) {
+    func decrease(alunoLife: Float, alienLife: Float, ammount: Float) -> (newStudentLife: Float, newAlienLife: Float) {
         let novaVidaAluno = alunoLife - ammount
         let novaVidaAlien = alienLife + ammount
         
