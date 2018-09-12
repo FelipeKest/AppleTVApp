@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		675300CF21496A5C006CCE93 /* BeamBaseParticle_Player.sks in Resources */ = {isa = PBXBuildFile; fileRef = 675300CD21496A5C006CCE93 /* BeamBaseParticle_Player.sks */; };
+		675300D221496C7C006CCE93 /* BeamBaseParticle_Alien.sks in Resources */ = {isa = PBXBuildFile; fileRef = 675300D121496C7C006CCE93 /* BeamBaseParticle_Alien.sks */; };
 		9118ACE02146E525000693DD /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9118ACDF2146E525000693DD /* Student.swift */; };
 		9118ACE22146E551000693DD /* Alien.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9118ACE12146E551000693DD /* Alien.swift */; };
 		9118ACE42146ED57000693DD /* Attack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9118ACE32146ED57000693DD /* Attack.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		675300CD21496A5C006CCE93 /* BeamBaseParticle_Player.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BeamBaseParticle_Player.sks; sourceTree = "<group>"; };
+		675300D121496C7C006CCE93 /* BeamBaseParticle_Alien.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BeamBaseParticle_Alien.sks; sourceTree = "<group>"; };
 		9118ACDF2146E525000693DD /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		9118ACE12146E551000693DD /* Alien.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alien.swift; sourceTree = "<group>"; };
 		9118ACE32146ED57000693DD /* Attack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 				913183AA21308968009A6CF0 /* Actions.sks */,
 				913183B021308968009A6CF0 /* Main.storyboard */,
 				913183AC21308968009A6CF0 /* GameScene.swift */,
+				675300CD21496A5C006CCE93 /* BeamBaseParticle_Player.sks */,
+				675300D121496C7C006CCE93 /* BeamBaseParticle_Alien.sks */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -271,8 +277,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				675300D221496C7C006CCE93 /* BeamBaseParticle_Alien.sks in Resources */,
 				913183B221308968009A6CF0 /* Main.storyboard in Resources */,
 				913183A921308968009A6CF0 /* GameScene.sks in Resources */,
+				675300CF21496A5C006CCE93 /* BeamBaseParticle_Player.sks in Resources */,
 				913183B42130896A009A6CF0 /* Assets.xcassets in Resources */,
 				913183AB21308968009A6CF0 /* Actions.sks in Resources */,
 			);
