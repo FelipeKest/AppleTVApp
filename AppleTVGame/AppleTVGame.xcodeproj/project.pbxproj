@@ -22,6 +22,8 @@
 		913183BF2130896A009A6CF0 /* AppleTVGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913183BE2130896A009A6CF0 /* AppleTVGameTests.swift */; };
 		913183CA2130896A009A6CF0 /* AppleTVGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913183C92130896A009A6CF0 /* AppleTVGameUITests.swift */; };
 		91ADC72721408A9000946C92 /* InfiniteScrollingBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ADC72621408A8F00946C92 /* InfiniteScrollingBackground.swift */; };
+		91F757FC2149B07B0065C045 /* BeamBaseParticle_Player.sks in Resources */ = {isa = PBXBuildFile; fileRef = 91F757FA2149B07B0065C045 /* BeamBaseParticle_Player.sks */; };
+		91F757FD2149B07B0065C045 /* BeamBaseParticle_Alien.sks in Resources */ = {isa = PBXBuildFile; fileRef = 91F757FB2149B07B0065C045 /* BeamBaseParticle_Alien.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		913183C92130896A009A6CF0 /* AppleTVGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleTVGameUITests.swift; sourceTree = "<group>"; };
 		913183CB2130896A009A6CF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91ADC72621408A8F00946C92 /* InfiniteScrollingBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollingBackground.swift; sourceTree = "<group>"; };
+		91F757FA2149B07B0065C045 /* BeamBaseParticle_Player.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BeamBaseParticle_Player.sks; sourceTree = "<group>"; };
+		91F757FB2149B07B0065C045 /* BeamBaseParticle_Alien.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BeamBaseParticle_Alien.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +188,8 @@
 				9118ACE6214876DD000693DD /* Attack.swift */,
 				9118ACEB21487717000693DD /* HitBeam.swift */,
 				91ADC72621408A8F00946C92 /* InfiniteScrollingBackground.swift */,
+				91F757FB2149B07B0065C045 /* BeamBaseParticle_Alien.sks */,
+				91F757FA2149B07B0065C045 /* BeamBaseParticle_Player.sks */,
 				913183AA21308968009A6CF0 /* Actions.sks */,
 			);
 			path = Effects;
@@ -295,6 +301,8 @@
 			files = (
 				913183B221308968009A6CF0 /* Main.storyboard in Resources */,
 				913183A921308968009A6CF0 /* GameScene.sks in Resources */,
+				91F757FC2149B07B0065C045 /* BeamBaseParticle_Player.sks in Resources */,
+				91F757FD2149B07B0065C045 /* BeamBaseParticle_Alien.sks in Resources */,
 				913183B42130896A009A6CF0 /* Assets.xcassets in Resources */,
 				913183AB21308968009A6CF0 /* Actions.sks in Resources */,
 			);

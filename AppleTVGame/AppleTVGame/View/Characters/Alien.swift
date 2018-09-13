@@ -11,12 +11,12 @@ import SpriteKit
 import AVFoundation
 
 class Alien {
-    public var vidaAlien: Float
+    static var alienHealth: Double = 300
     var alienImage: UIImage
     var alienSound: AVAudioPlayer?
     
-    init(life: Float, imagemAlien: UIImage) {
-        self.vidaAlien = life
+    init(life: Double, imagemAlien: UIImage) {
+        Alien.alienHealth = life
         self.alienImage = imagemAlien
     }
 }

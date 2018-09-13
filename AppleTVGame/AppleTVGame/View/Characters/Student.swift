@@ -10,14 +10,14 @@ import UIKit
 import SpriteKit
 
 class Student:SKSpriteNode {
-    let instance = Student()
+    static let instance = Student()
     
-    var studentHealth: Float = 3
-//    var studentImages: [UIImage]  = [UIImage(named: "Student")]
+    static var studentHealth: Double = 300
+    var studentImages: [UIImage]  = [UIImage(named: "player_attacking")!]
+    
     
     private init() {
-        
-        let texture = SKTexture(imageNamed: "Student")
+        let texture = SKTexture(imageNamed: "player_attacking")
         super.init(texture: texture, color: .clear, size: texture.size())
     }
     

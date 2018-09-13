@@ -11,18 +11,18 @@ import SpriteKit
 
 class HitBeam: SKSpriteNode {
     var beamBody: UIImage
-    var beamEnd: UIImage
+    //var beamEnd: UIImage
     var beamBodyParticle: SKEmitterNode
-    var beamEndParticle: SKEmitterNode
-    var beamSize: Float
+    //var beamEndParticle: SKEmitterNode
+    var beamSize: Double = Student.studentHealth + Alien.alienHealth
     
-    init(body: UIImage, end: UIImage, bodyParticle: SKEmitterNode, endParticle: SKEmitterNode, beamPower: Float){
-        let texture = SKTexture(imageNamed: "")
+    init(body: UIImage, bodyParticle: SKEmitterNode, size: Double){
+        let texture = SKTexture(image: body)
         self.beamBody = body
-        self.beamEnd = end
         self.beamBodyParticle = bodyParticle
-        self.beamEndParticle = endParticle
-        self.beamSize = beamPower
+        //self.beamEndParticle = endParticle
+        self.beamSize = size
+        //self.beamEnd = end
         super.init(texture: texture, color: UIColor.red, size: texture.size())
     }
     

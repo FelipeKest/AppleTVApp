@@ -14,23 +14,31 @@ class GameScene: SKScene {
     private var label : SKLabelNode?
     var scroller: InfiniteScrollingBackground?
     var isInBattle: Bool!
+    var player = Student.instance
+    var playerBeam = HitBeam(body: UIImage(named: "beam_player")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Player")!, size: 3.0)
+    var alienBeam = HitBeam(body: UIImage(named: "beam_alien")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Alien")!, size: 3.0)
     
     init(battleState: Bool) {
         super.init()
         self.isInBattle = battleState
     }
     
+    
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     override func didMove(to view: SKView) {
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
+        player.position = CGPoint(x: -100, y: -80)
+        self.addChild(player)
+        playerBeam.zPosition = 3
+        playerBeam.position = CGPoint(x: -150, y: -80)
+        playerBeam.size = CGSize(width: Student.studentHealth, height: 80.0)
+        alienBeam.zPosition = 3
+        alienBeam.position = CGPoint(x: 150, y: -81)
+        alienBeam.size = CGSize(width: Alien.alienHealth, height: 79.0)
+        self.addChild(playerBeam)
+        self.addChild(alienBeam)
         
         //define quais imagens são utilizadas no background
         let backgroundimages = [UIImage(named: "bg1")!, UIImage(named: "bg2")!]
@@ -49,6 +57,7 @@ class GameScene: SKScene {
     
     func touchDown(atPoint pos : CGPoint) {
         scroller?.stopScroll()
+        isInBattle = true
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -58,6 +67,7 @@ class GameScene: SKScene {
     func touchUp(atPoint pos : CGPoint) {
 
     }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let label = self.label {
@@ -83,4 +93,6 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
     }
+    
+
 }
