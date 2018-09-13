@@ -10,13 +10,19 @@ import UIKit
 import SpriteKit
 import AVFoundation
 
-class Alien {
-    static var alienHealth: Double = 300
-    var alienImage: UIImage
+class Alien: SKSpriteNode {
+    static var alienHealth: Double = 250
+    var alienImages: [UIImage]
     var alienSound: AVAudioPlayer?
     
-    init(life: Double, imagemAlien: UIImage) {
+    init(life: Double, imagensAlien: [UIImage]) {
+        let texture = SKTexture(imageNamed: "Alien1")
         Alien.alienHealth = life
-        self.alienImage = imagemAlien
+        self.alienImages = imagensAlien
+        super.init(texture: texture, color: .clear, size: texture.size())
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

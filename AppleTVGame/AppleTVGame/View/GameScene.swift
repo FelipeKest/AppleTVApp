@@ -13,9 +13,10 @@ class GameScene: SKScene {
     
     private var label : SKLabelNode?
     var scroller: InfiniteScrollingBackground?
-    var isInBattle: Bool!
+    var isInBattle: Bool! = false
     var player = Student.instance
     var playerBeam = HitBeam(body: UIImage(named: "beam_player")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Player")!, size: 3.0)
+    var alien = Alien(life: 2.0, imagensAlien: [UIImage(named: "Alien1")!])
     var alienBeam = HitBeam(body: UIImage(named: "beam_alien")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Alien")!, size: 3.0)
     
     init(battleState: Bool) {
@@ -29,16 +30,6 @@ class GameScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
-        player.position = CGPoint(x: -100, y: -80)
-        self.addChild(player)
-        playerBeam.zPosition = 3
-        playerBeam.position = CGPoint(x: -150, y: -80)
-        playerBeam.size = CGSize(width: Student.studentHealth, height: 80.0)
-        alienBeam.zPosition = 3
-        alienBeam.position = CGPoint(x: 150, y: -81)
-        alienBeam.size = CGSize(width: Alien.alienHealth, height: 79.0)
-        self.addChild(playerBeam)
-        self.addChild(alienBeam)
         
         //define quais imagens são utilizadas no background
         let backgroundimages = [UIImage(named: "bg1")!, UIImage(named: "bg2")!]
@@ -92,6 +83,30 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        if isInBattle == true{
+            player.zPosition = 3
+            player.position = CGPoint(x: -300, y: -80)
+            player.texture = SKTexture(image: player.studentImages[0])
+            player.size = CGSize(width: 100.0, height: 150.0)
+            self.addChild(player)
+            
+            alien.zPosition = 3
+            alien.position = CGPoint(x: 300, y: -80)
+            alien.texture = SKTexture(image: alien.alienImages[0])
+            alien.size = CGSize(width: 100.0, height: 100.0)
+            self.addChild(alien)
+            
+            playerBeam.zPosition = 2
+            playerBeam.position = CGPoint(x: -130, y: -87)
+            playerBeam.size = CGSize(width: Student.studentHealth, height: 80.0)
+            self.addChild(playerBeam)
+            
+            alienBeam.zPosition = 2
+            alienBeam.position = CGPoint(x: 150, y: -81)
+            alienBeam.size = CGSize(width: 200, height: 79.0)
+            self.addChild(alienBeam)
+            isInBattle = false
+        }
     }
     
 
