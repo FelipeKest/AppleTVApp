@@ -33,16 +33,15 @@ class NumberCard {
             
             var denominator = Int(100 * value)
             var numerator = 100
-            let divider = 2
             
-            (denominator, numerator) = findMinMultiplier (denominator: denominator, numerator: numerator, divider: divider) //acha o mmc da fração
+            (denominator, numerator) = findMinMultiplier (denominator: denominator, numerator: numerator, divider: 2) //acha o mmc da fração
             
             self.numberDisplay = "\(denominator)/\(numerator)"
             
         default:
             self.numberDisplay = "U DONE F****** IT UP"
         }
-}
+    }
     
     
     
@@ -59,12 +58,14 @@ class NumberCard {
     
     
     
-    init(cardBG: UIImage, numberValue: Float, numberDisplay: String){
-        self.cardBG = UIImage(named: "cardBG")
+    init(cardBG: UIImage, numberValue: Float){
+        self.cardBG = cardBG
         self.numberValue = numberValue
     }
     
-    
+    convenience init (numberValue: Float){
+        self.init(cardBG: UIImage(named: "card_neutro")!, numberValue: numberValue)
+    }
     
 }
 
@@ -73,8 +74,12 @@ class NumberCard {
 
 //essa função não faz parte da classe
 func findMinMultiplier (denominator: Int, numerator: Int, divider: Int) -> (Int, Int){
-    if denominator % divider > 0 || numerator % divider > 0 {
+    if divider > denominator || divider > numerator {
         return (denominator, divider)
+    }
+    
+    else if denominator % divider > 0 && numerator % divider > 0 {
+        return findMinMultiplier(denominator: denominator/divider, numerator: numerator/divider, divider: divider)
     }
     else{
         let newDivider = divider + 1
