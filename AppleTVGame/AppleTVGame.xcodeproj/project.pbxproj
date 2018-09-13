@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6742F82A214A81A700CF0216 /* NumberCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6742F829214A81A700CF0216 /* NumberCard.swift */; };
 		9118ACE8214876DD000693DD /* Alien.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9118ACE5214876DD000693DD /* Alien.swift */; };
 		9118ACE9214876DD000693DD /* Attack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9118ACE6214876DD000693DD /* Attack.swift */; };
 		9118ACEA214876DD000693DD /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9118ACE7214876DD000693DD /* Student.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6742F829214A81A700CF0216 /* NumberCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberCard.swift; sourceTree = "<group>"; };
 		9118ACE5214876DD000693DD /* Alien.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alien.swift; sourceTree = "<group>"; };
 		9118ACE6214876DD000693DD /* Attack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
 		9118ACE7214876DD000693DD /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		9118ACDD2146E4EC000693DD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6742F829214A81A700CF0216 /* NumberCard.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				91ADC72721408A9000946C92 /* InfiniteScrollingBackground.swift in Sources */,
 				9118ACEC21487717000693DD /* HitBeam.swift in Sources */,
 				913183AF21308968009A6CF0 /* GameViewController.swift in Sources */,
+				6742F82A214A81A700CF0216 /* NumberCard.swift in Sources */,
 				9118ACEA214876DD000693DD /* Student.swift in Sources */,
 				913183A721308967009A6CF0 /* AppDelegate.swift in Sources */,
 				9118ACE8214876DD000693DD /* Alien.swift in Sources */,
