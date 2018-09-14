@@ -9,10 +9,10 @@
 import UIKit
 import SpriteKit
 
+//Classe Singleton
 class Student:SKSpriteNode {
     static let instance = Student()
-    
-    static var studentHealth: Double = 250
+    static var studentHealth: Double = 3
     var studentImages: [UIImage]  = [UIImage(named: "player_attacking")!]
     
     

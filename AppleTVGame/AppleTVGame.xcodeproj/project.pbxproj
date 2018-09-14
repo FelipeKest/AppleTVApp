@@ -97,6 +97,7 @@
 		9118ACDD2146E4EC000693DD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9118ACE6214876DD000693DD /* Attack.swift */,
 				6742F829214A81A700CF0216 /* NumberCard.swift */,
 			);
 			path = Model;
@@ -185,7 +186,6 @@
 		91C0A85321494A6300495CA0 /* Effects */ = {
 			isa = PBXGroup;
 			children = (
-				9118ACE6214876DD000693DD /* Attack.swift */,
 				9118ACEB21487717000693DD /* HitBeam.swift */,
 				91ADC72621408A8F00946C92 /* InfiniteScrollingBackground.swift */,
 				91F757FB2149B07B0065C045 /* BeamBaseParticle_Alien.sks */,

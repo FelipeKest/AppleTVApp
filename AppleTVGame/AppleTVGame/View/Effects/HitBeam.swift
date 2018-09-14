@@ -14,34 +14,21 @@ class HitBeam: SKSpriteNode {
     //var beamEnd: UIImage
     var beamBodyParticle: SKEmitterNode
     //var beamEndParticle: SKEmitterNode
-    var beamSize: Double = Student.studentHealth + Alien.alienHealth
+    var beamSize: Double = 500
+    var numOfLives: Int
     
-    init(body: UIImage, bodyParticle: SKEmitterNode, size: Double){
+    init(body: UIImage, bodyParticle: SKEmitterNode, lives: Int){
         let texture = SKTexture(image: body)
         self.beamBody = body
         self.beamBodyParticle = bodyParticle
         //self.beamEndParticle = endParticle
-        self.beamSize = size
+        self.numOfLives = lives
         //self.beamEnd = end
         super.init(texture: texture, color: UIColor.red, size: texture.size())
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func increase(alunoLife: Float, alienLife: Float, ammount: Float) -> (newStudentLife: Float, newAlienLife: Float) {
-        let novaVidaAluno = alunoLife + ammount
-        let novaVidaAlien = alienLife - ammount
-        
-        return (novaVidaAluno, novaVidaAlien)
-    }
-    
-    func decrease(alunoLife: Float, alienLife: Float, ammount: Float) -> (newStudentLife: Float, newAlienLife: Float) {
-        let novaVidaAluno = alunoLife - ammount
-        let novaVidaAlien = alienLife + ammount
-        
-        return (novaVidaAluno, novaVidaAlien)
     }
     
 }

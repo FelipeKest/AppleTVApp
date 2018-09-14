@@ -1,15 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="13122.16" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="499-42-d0g">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="14313.13.2" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DtX-GU-pmQ">
+    <device id="appleTV" orientation="landscape">
+        <adaptation id="light"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="tvOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.9"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="MM5-h0-yCM">
+            <objects>
+                <viewController id="DtX-GU-pmQ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FOw-Xn-LnU"/>
+                        <viewControllerLayoutGuide type="bottom" id="2i0-zl-Du5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qq7-Ca-wpk">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Alienzin da parada" translatesAutoresizingMaskIntoConstraints="NO" id="LTo-TD-Vzx">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="startButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27y-kL-2vC">
+                                <rect key="frame" x="426" y="772" width="351" height="149"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="351" id="aKu-ka-bQe"/>
+                                    <constraint firstAttribute="height" constant="149" id="lsi-3d-0uV"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <segue destination="499-42-d0g" kind="show" id="JU8-To-SAo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ia-Jb-lGW">
+                                <rect key="frame" x="1108" y="772" width="351" height="149"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="351" id="93m-7A-JtD"/>
+                                    <constraint firstAttribute="height" constant="149" id="Nyl-rd-OoN"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="Help"/>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="xbX-Vn-0wp" firstAttribute="trailing" secondItem="3Ia-Jb-lGW" secondAttribute="trailing" constant="371" id="JG5-BX-idb"/>
+                            <constraint firstItem="27y-kL-2vC" firstAttribute="top" secondItem="FOw-Xn-LnU" secondAttribute="bottom" constant="712" id="Q6N-iI-mkL"/>
+                            <constraint firstItem="3Ia-Jb-lGW" firstAttribute="top" secondItem="FOw-Xn-LnU" secondAttribute="bottom" constant="712" id="WyY-cf-xjp"/>
+                            <constraint firstItem="3Ia-Jb-lGW" firstAttribute="leading" secondItem="27y-kL-2vC" secondAttribute="trailing" constant="331" id="cZn-ox-CLd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xbX-Vn-0wp"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pj9-4p-WZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2853" y="1161"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="dEh-eV-dlg">
             <objects>
-                <viewController id="499-42-d0g" customClass="GameViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="499-42-d0g" customClass="GameViewController" customModule="AppleTVGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TiC-Vw-u93"/>
                         <viewControllerLayoutGuide type="bottom" id="3TX-uQ-fmp"/>
@@ -17,6 +72,7 @@
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="weF-Pa-zaM" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="6df-27-8hi"/>
                     </view>
                 </viewController>
@@ -24,4 +80,7 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="Alienzin da parada" width="1920" height="1080"/>
+    </resources>
 </document>

@@ -11,21 +11,15 @@ import SpriteKit
 
 class Attack {
     
-    //MARK: Propriedades
- 
-    //MARK: Initializer
-    init(poder: Int) {
-    }
-    
     //MARK: Public Functions
-    func increase(alunoLife: Int, alienLife: Int, ammount: Int) -> (newStudentLife:Int, newAlienLife: Int) {
+    static func increase(alunoLife: Double, alienLife: Double, ammount: Double) -> (newStudentLife: Double, newAlienLife: Double) {
         let novaVidaAluno = alunoLife + ammount
         let novaVidaAlien = alienLife - ammount
     
         return (novaVidaAluno, novaVidaAlien)
     }
     
-    func decrease(alunoLife: Int, alienLife: Int, ammount: Int) -> (newStudentLife:Int, newAlienLife: Int) {
+    static func decrease(alunoLife: Double, alienLife: Double, ammount: Double) -> (newStudentLife: Double, newAlienLife: Double) {
         let novaVidaAluno = alunoLife - ammount
         let novaVidaAlien = alienLife + ammount
         
