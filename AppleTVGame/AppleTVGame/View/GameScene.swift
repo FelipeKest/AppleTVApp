@@ -17,8 +17,8 @@ class GameScene: SKScene {
     var hasTouched: Bool! = false
     var player = Student.instance
     var playerBeam = HitBeam(body: UIImage(named: "beam_player")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Player")!, livesOfOwner: 3)
-    var alien = Alien(life: 2, imagensAlien: [UIImage(named: "Alien1")!])
-    var alienBeam = HitBeam(body: UIImage(named: "beam_alien")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Alien")!, livesOfOwner: 2)
+    var alien = Alien(life: 5, imagensAlien: [UIImage(named: "Alien1")!])
+    var alienBeam = HitBeam(body: UIImage(named: "beam_alien")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Alien")!, livesOfOwner: 5)
     var swipeLeftInstance: UISwipeGestureRecognizer?
     var swipeRightInstance: UISwipeGestureRecognizer?
     var distanceBetween: Double = 500
@@ -80,7 +80,10 @@ class GameScene: SKScene {
         
         if isInBattle && hasTouched == true {
             Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
-
+            let beamPiece = distanceBetween / Double(Student.studentHealth + alien.alienHealth)
+            
+            self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
+            self.alienBeam.size = CGSize(width: beamPiece * Double(alien.alienHealth), height: 80.0)
         }
     }
     
@@ -116,7 +119,7 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        if isInBattle == true && hasTouched == false{
+        if isInBattle == true && hasTouched == false {
             
             addCards()
             
@@ -147,7 +150,6 @@ class GameScene: SKScene {
             alienBeam.size = CGSize(width: beamPiece * Double(alienBeam.numOfLives), height: 80.0)
             
             self.addChild(alienBeam)
-            isInBattle = false
             
             hasTouched = true
         }
