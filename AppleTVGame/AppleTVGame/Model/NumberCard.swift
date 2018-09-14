@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class NumberCard {
+public class NumberCard {
     
     var cardBG: UIImage!
     let numberValue: Float!
@@ -47,24 +47,22 @@ class NumberCard {
     
     func changeBG (correct: Bool){
         if correct == true{
-            self.cardBG = UIImage(named: "---NOME DO CARTÃO VERDE AQUI---")
+            self.cardBG = UIImage(named: "card_certo")
         }
         else{
-            self.cardBG = UIImage(named: "---NOME DO CARTÃO VERMELHO AQUI---")
+            self.cardBG = UIImage(named: "card_errado")
         }
     }
     
-    
+    func resetBG () {
+        self.cardBG = UIImage(named: "card_neutro")
+    }
     
     
     
     init(cardBG: UIImage, numberValue: Float){
         self.cardBG = cardBG
         self.numberValue = numberValue
-    }
-    
-    convenience init (numberValue: Float){
-        self.init(cardBG: UIImage(named: "card_neutro")!, numberValue: numberValue)
     }
     
 }
