@@ -23,13 +23,13 @@ public class NumberCard {
         case 1: //só mostra o número como o valor decimal
             
             self.numberDisplay = "\(value)"
-            print ("\(String(describing: self.numberDisplay))")
+            //print ("\(String(describing: self.numberDisplay))")
             
         case 2: //mostra número como porcentagem
             
             let cardString = "\(100 * value)%"
             self.numberDisplay = cardString
-            print ("\(String(describing: self.numberDisplay))")
+            //print ("\(String(describing: self.numberDisplay))")
             
         case 3: //mostra o número como fração
             

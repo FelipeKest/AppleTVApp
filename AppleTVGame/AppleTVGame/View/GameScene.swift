@@ -41,11 +41,46 @@ class GameScene: SKScene {
     }
     
     @objc func swipeLeft(){
-        print("Left!!!!!")
+        print("Left:")
+        if leftCard.numberValue > rightCard.numberValue {
+            // ganha o ponto e da hit no alien
+            print("Estudante antes de levar",Student.studentHealth)
+            print("Alien antes de levar ",alien.alienHealth)
+            Attack.increase(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
+            leftCard.changeBG(correct: true)
+            print("Estudante da hit = ",Student.studentHealth)
+            print("Alien leva hit = ",alien.alienHealth)
+
+        }
+        else {
+            print(Student.studentHealth)
+            print(alien.alienHealth)
+            Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
+            rightCard.changeBG(correct: false)
+            print("Estudante leva hit = ",Student.studentHealth)
+            print("Alien da hit = ",alien.alienHealth)
+        }
     }
     
     @objc func swipeRight(){
-        print("Right!!!!!")
+        print("Right:")
+        if rightCard.numberValue > leftCard.numberValue {
+            // ganha e da hit no alien
+            print("Estudante antes de dar =", Student.studentHealth)
+            print("Alien antes de levar =", alien.alienHealth)
+            Attack.increase(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
+            rightCard.changeBG(correct: true)
+            print("Estudante da hit = ", Student.studentHealth)
+            print("Alien leva hit = ", alien.alienHealth)
+        }
+        else {
+            print(Student.studentHealth)
+            print(alien.alienHealth)
+            Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
+            leftCard.changeBG(correct: false)
+            print("Estudante leva hit = ", Student.studentHealth)
+            print("Alien da hit = ", alien.alienHealth)
+        }
     }
     
     override func didMove(to view: SKView) {
@@ -79,7 +114,7 @@ class GameScene: SKScene {
         cardsNeeded = true
         
         if isInBattle && hasTouched == true {
-            Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
+            //Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
 
         }
     }
@@ -156,11 +191,6 @@ class GameScene: SKScene {
     
     
     func addCards () {
-        
-        for family in UIFont.familyNames.sorted() {
-            let names = UIFont.fontNames(forFamilyName: family)
-            print("Family: \(family) Font names: \(names)")
-        }
         
         leftCard.convertNumber(value: leftCard.numberValue)
         rightCard.convertNumber(value: rightCard.numberValue)
