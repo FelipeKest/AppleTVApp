@@ -9,6 +9,8 @@
 import Foundation
 import SpriteKit
 
+typealias Rational = (num : Int, den : Int)
+
 public class NumberCard {
     
     var cardBG: UIImage!
@@ -33,13 +35,12 @@ public class NumberCard {
             
         case 3: //mostra o número como fração
             
-            var denominator = Int(100 * value)
-            var numerator = 100
+            var fraction: Rational
             
-            (denominator, numerator) = findMinMultiplier (denominator: denominator, numerator: numerator, divider: 2) //acha o mmc da fração
+            fraction = rationalApproximation(of: Double(numberValue))
             
-            self.numberDisplay = "\(denominator)/\(numerator)"
-            //print ("\(String(describing: self.numberDisplay))")
+            let cardString = "\(fraction.num)/\(fraction.den)"
+            self.numberDisplay = cardString
             
         default:
             self.numberDisplay = "U DONE F****** IT UP"
@@ -50,7 +51,7 @@ public class NumberCard {
     
     func changeBG (correct: Bool){
         if correct == true{
-            self.cardBG = UIImage(named: "card_certo")
+            self.cardBG = UIImage(named: "card_correto")
         }
         else{
             self.cardBG = UIImage(named: "card_errado")
@@ -74,16 +75,33 @@ public class NumberCard {
 
 
 //essa função não faz parte da classe
-func findMinMultiplier (denominator: Int, numerator: Int, divider: Int) -> (Int, Int){
+
+func rationalApproximation(of x0 : Double, withPrecision eps : Double = 1.0E-6) -> Rational {
+    var x = x0
+    var a = x.rounded(.down)
+    var (h1, k1, h, k) = (1, 0, Int(a), 1)
+    
+    while x - a > eps * Double(k) * Double(k) {
+        x = 1.0/(x - a)
+        a = x.rounded(.down)
+        (h1, k1, h, k) = (h, k, h1 + Int(a) * h, k1 + Int(a) * k)
+    }
+    return (h, k)
+}
+/*func findMinMultiplier (denominator: Int, numerator: Int, divider: Int) -> (Int, Int){
     if divider > denominator || divider > numerator {
+        print ("divider > denominator -> \(denominator)")
         return (denominator, divider)
     }
     
-    else if denominator % divider > 0 && numerator % divider > 0 {
-        return findMinMultiplier(denominator: denominator/divider, numerator: numerator/divider, divider: divider)
-    }
-    else{
+    else if denominator % divider != 0 && numerator % divider != 0 {
         let newDivider = divider + 1
+        print ("denominator % divider != 0  -> \(denominator)")
         return findMinMultiplier(denominator: denominator, numerator: numerator, divider: newDivider)
     }
-}
+    else{
+        print ("denominator % divider = 0 -> \(denominator)")
+        return findMinMultiplier(denominator: denominator/divider, numerator:
+            numerator/divider, divider: divider)
+    }
+}*/

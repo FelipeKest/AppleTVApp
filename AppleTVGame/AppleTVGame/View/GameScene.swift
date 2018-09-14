@@ -41,13 +41,14 @@ class GameScene: SKScene {
     }
     
     @objc func swipeLeft(){
-        print("Left:")
+        print("Left: \(leftCard.numberValue)")
         if leftCard.numberValue > rightCard.numberValue {
             // ganha o ponto e da hit no alien
             print("Estudante antes de levar",Student.studentHealth)
             print("Alien antes de levar ",alien.alienHealth)
             Attack.increase(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
-            leftCard.changeBG(correct: true)
+            //leftCard.changeBG(correct: true)
+            leftCardBG?.texture = SKTexture(imageNamed: "card_correto")
             print("Estudante da hit = ",Student.studentHealth)
             print("Alien leva hit = ",alien.alienHealth)
 
@@ -56,20 +57,23 @@ class GameScene: SKScene {
             print(Student.studentHealth)
             print(alien.alienHealth)
             Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
-            rightCard.changeBG(correct: false)
+            //leftCard.changeBG(correct: false)
+            leftCardBG?.texture = SKTexture(imageNamed: "card_errado")
             print("Estudante leva hit = ",Student.studentHealth)
             print("Alien da hit = ",alien.alienHealth)
         }
     }
     
     @objc func swipeRight(){
+        print("Left: \(leftCard.numberValue)")
         print("Right:")
         if rightCard.numberValue > leftCard.numberValue {
             // ganha e da hit no alien
             print("Estudante antes de dar =", Student.studentHealth)
             print("Alien antes de levar =", alien.alienHealth)
             Attack.increase(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
-            rightCard.changeBG(correct: true)
+            //rightCard.changeBG(correct: true)
+            rightCardBG?.texture = SKTexture(imageNamed: "card_correto")
             print("Estudante da hit = ", Student.studentHealth)
             print("Alien leva hit = ", alien.alienHealth)
         }
@@ -77,7 +81,8 @@ class GameScene: SKScene {
             print(Student.studentHealth)
             print(alien.alienHealth)
             Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
-            leftCard.changeBG(correct: false)
+            rightCard.changeBG(correct: false)
+            rightCardBG?.texture = SKTexture(imageNamed: "card_errado")
             print("Estudante leva hit = ", Student.studentHealth)
             print("Alien da hit = ", alien.alienHealth)
         }
@@ -191,6 +196,8 @@ class GameScene: SKScene {
     
     
     func addCards () {
+        print("LeftValue: \(leftCard.numberValue)")
+        print("RightValue: \(rightCard.numberValue)")
         
         leftCard.convertNumber(value: leftCard.numberValue)
         rightCard.convertNumber(value: rightCard.numberValue)
