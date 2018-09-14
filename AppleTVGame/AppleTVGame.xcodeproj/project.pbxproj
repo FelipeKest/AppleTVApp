@@ -24,6 +24,7 @@
 		91ADC72721408A9000946C92 /* InfiniteScrollingBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ADC72621408A8F00946C92 /* InfiniteScrollingBackground.swift */; };
 		91F757FC2149B07B0065C045 /* BeamBaseParticle_Player.sks in Resources */ = {isa = PBXBuildFile; fileRef = 91F757FA2149B07B0065C045 /* BeamBaseParticle_Player.sks */; };
 		91F757FD2149B07B0065C045 /* BeamBaseParticle_Alien.sks in Resources */ = {isa = PBXBuildFile; fileRef = 91F757FB2149B07B0065C045 /* BeamBaseParticle_Alien.sks */; };
+		91F75801214B786B0065C045 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F75800214B786B0065C045 /* InstructionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		91ADC72621408A8F00946C92 /* InfiniteScrollingBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollingBackground.swift; sourceTree = "<group>"; };
 		91F757FA2149B07B0065C045 /* BeamBaseParticle_Player.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BeamBaseParticle_Player.sks; sourceTree = "<group>"; };
 		91F757FB2149B07B0065C045 /* BeamBaseParticle_Alien.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BeamBaseParticle_Alien.sks; sourceTree = "<group>"; };
+		91F75800214B786B0065C045 /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InstructionsViewController.swift; path = AppleTVGame/Controller/InstructionsViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				91C0A85321494A6300495CA0 /* Effects */,
 				913183A821308968009A6CF0 /* GameScene.sks */,
 				913183B021308968009A6CF0 /* Main.storyboard */,
+				91F75800214B786B0065C045 /* InstructionsViewController.swift */,
 				913183AC21308968009A6CF0 /* GameScene.swift */,
 			);
 			path = View;
@@ -333,6 +336,7 @@
 				91ADC72721408A9000946C92 /* InfiniteScrollingBackground.swift in Sources */,
 				9118ACEC21487717000693DD /* HitBeam.swift in Sources */,
 				913183AF21308968009A6CF0 /* GameViewController.swift in Sources */,
+				91F75801214B786B0065C045 /* InstructionsViewController.swift in Sources */,
 				6742F82A214A81A700CF0216 /* NumberCard.swift in Sources */,
 				9118ACEA214876DD000693DD /* Student.swift in Sources */,
 				913183A721308967009A6CF0 /* AppDelegate.swift in Sources */,

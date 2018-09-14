@@ -46,6 +46,9 @@
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                 <state key="normal" title="Help"/>
+                                <connections>
+                                    <segue destination="VSy-Mk-hWo" kind="show" id="EUe-Y1-Ryd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -60,6 +63,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pj9-4p-WZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2853" y="1161"/>
+        </scene>
+        <!--Instructions View Controller-->
+        <scene sceneID="lSZ-fc-vLF">
+            <objects>
+                <viewController id="VSy-Mk-hWo" customClass="InstructionsViewController" customModule="AppleTVGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rUe-yL-E1D"/>
+                        <viewControllerLayoutGuide type="bottom" id="YR7-bH-Dmo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eRf-ML-naf">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Alienzin da parada" translatesAutoresizingMaskIntoConstraints="NO" id="hJf-GS-la7">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="68b-hj-MpT">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Inserir texto de introducao e instrucoes ao jogo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kt-BO-uJV">
+                                        <rect key="frame" x="559" y="517" width="802" height="46"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXw-xo-I6Y">
+                                        <rect key="frame" x="863" y="887" width="195" height="86"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                        <state key="normal" title="Return"/>
+                                        <connections>
+                                            <action selector="bla:" destination="7NP-qp-AlL" eventType="primaryActionTriggered" id="ZT2-X5-l8s"/>
+                                            <action selector="dismissAction:" destination="VSy-Mk-hWo" eventType="primaryActionTriggered" id="4mv-tk-EgI"/>
+                                            <action selector="dismissAction:" destination="7NP-qp-AlL" eventType="primaryActionTriggered" id="pT2-dy-VWe"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="flv-Bj-M0A"/>
+                    </view>
+                    <connections>
+                        <outlet property="view" destination="hXw-xo-I6Y" id="2n1-db-vOL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zol-jj-1uH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="7NP-qp-AlL" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-2853" y="2933"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="dEh-eV-dlg">

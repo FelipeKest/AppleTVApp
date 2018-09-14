@@ -137,11 +137,6 @@ class GameScene: SKScene {
             
             hasTouched = true
         }
-            
-        if isInBattle && hasTouched == true {
-            
-        }
-        
         
     }
     
