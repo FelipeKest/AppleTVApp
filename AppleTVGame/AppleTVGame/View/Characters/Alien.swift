@@ -11,13 +11,13 @@ import SpriteKit
 import AVFoundation
 
 class Alien: SKSpriteNode {
-    static var alienHealth: Double = 250
+    var alienHealth: Double
     var alienImages: [UIImage]
     var alienSound: AVAudioPlayer?
     
     init(life: Double, imagensAlien: [UIImage]) {
         let texture = SKTexture(imageNamed: "Alien1")
-        Alien.alienHealth = life
+        self.alienHealth = life
         self.alienImages = imagensAlien
         super.init(texture: texture, color: .clear, size: texture.size())
     }

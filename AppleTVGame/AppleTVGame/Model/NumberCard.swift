@@ -17,17 +17,19 @@ public class NumberCard {
     
     
     func convertNumber(value: Float){
-        let possibility = arc4random_uniform(2) + 1
+        let possibility = arc4random_uniform(3) + 1
         
         switch possibility {
         case 1: //só mostra o número como o valor decimal
             
             self.numberDisplay = "\(value)"
+            print ("\(String(describing: self.numberDisplay))")
             
         case 2: //mostra número como porcentagem
             
             let cardString = "\(100 * value)%"
             self.numberDisplay = cardString
+            print ("\(String(describing: self.numberDisplay))")
             
         case 3: //mostra o número como fração
             
@@ -37,6 +39,7 @@ public class NumberCard {
             (denominator, numerator) = findMinMultiplier (denominator: denominator, numerator: numerator, divider: 2) //acha o mmc da fração
             
             self.numberDisplay = "\(denominator)/\(numerator)"
+            //print ("\(String(describing: self.numberDisplay))")
             
         default:
             self.numberDisplay = "U DONE F****** IT UP"

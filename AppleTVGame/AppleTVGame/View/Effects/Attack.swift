@@ -16,18 +16,16 @@ class Attack {
     //MARK: Initializer
     
     //MARK: Public Functions
-    func increase(alunoLife: Float, alienLife: Float, ammount: Float) -> (newStudentLife: Float, newAlienLife: Float) {
-        let novaVidaAluno = alunoLife + ammount
-        let novaVidaAlien = alienLife - ammount
-    
-        return (novaVidaAluno, novaVidaAlien)
+    static func increase( alunoLife: inout Double, alienLife: inout Double, ammount: Double) {
+        alunoLife += ammount
+        alienLife -= ammount
     }
     
-    func decrease(alunoLife: Float, alienLife: Float, ammount: Float) -> (newStudentLife: Float, newAlienLife: Float) {
-        let novaVidaAluno = alunoLife - ammount
-        let novaVidaAlien = alienLife + ammount
-        
-        return (novaVidaAluno, novaVidaAlien)
+    static func decrease(alunoLife: inout Double, alienLife: inout Double, ammount: Double) {
+        alunoLife -= ammount
+        alienLife += ammount
+        print(alienLife)
+        print(alunoLife)
     }
 
 }

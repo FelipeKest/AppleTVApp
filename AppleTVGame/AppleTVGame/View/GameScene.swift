@@ -14,10 +14,14 @@ class GameScene: SKScene {
     private var label : SKLabelNode?
     var scroller: InfiniteScrollingBackground?
     var isInBattle: Bool! = false
+    var hasTouched: Bool! = false
     var player = Student.instance
-    var playerBeam = HitBeam(body: UIImage(named: "beam_player")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Player")!, size: 3.0)
-    var alien = Alien(life: 2.0, imagensAlien: [UIImage(named: "Alien1")!])
-    var alienBeam = HitBeam(body: UIImage(named: "beam_alien")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Alien")!, size: 3.0)
+    var playerBeam = HitBeam(body: UIImage(named: "beam_player")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Player")!, livesOfOwner: 3)
+    var alien = Alien(life: 2, imagensAlien: [UIImage(named: "Alien1")!])
+    var alienBeam = HitBeam(body: UIImage(named: "beam_alien")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Alien")!, livesOfOwner: 2)
+    var swipeLeftInstance: UISwipeGestureRecognizer?
+    var swipeRightInstance: UISwipeGestureRecognizer?
+    var distanceBetween: Double = 500
     public var leftCard = NumberCard(cardBG: UIImage(named: "card_neutro")!, numberValue: Float.random(min:0.01, max: 2.99))
     public var rightCard = NumberCard(cardBG: UIImage(named: "card_neutro")!, numberValue: Float.random(min:0.01, max: 2.99))
     var cardsNeeded: Bool! = false
@@ -36,10 +40,26 @@ class GameScene: SKScene {
         super.init(coder: aDecoder)
     }
     
+    @objc func swipeLeft(){
+        print("Left!!!!!")
+    }
+    
+    @objc func swipeRight(){
+        print("Right!!!!!")
+    }
+    
     override func didMove(to view: SKView) {
         
         //define quais imagens são utilizadas no background
         let backgroundimages = [UIImage(named: "bg1")!, UIImage(named: "bg2")!]
+        
+        self.swipeLeftInstance = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.swipeLeft))
+        self.swipeLeftInstance?.direction = .left
+        self.view?.addGestureRecognizer(swipeLeftInstance!)
+        
+        self.swipeRightInstance = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.swipeRight))
+        self.swipeRightInstance?.direction = .right
+        self.view?.addGestureRecognizer(swipeRightInstance!)
         
         // Initializing InfiniteScrollingBackground's Instance:
         scroller = InfiniteScrollingBackground(images: backgroundimages, scene: self, scrollDirection: .left, speed: 10)
@@ -57,6 +77,11 @@ class GameScene: SKScene {
         scroller?.stopScroll()
         isInBattle = true
         cardsNeeded = true
+        
+        if isInBattle && hasTouched == true {
+            Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
+
+        }
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -91,7 +116,7 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        if isInBattle == true{
+        if isInBattle == true && hasTouched == false{
             
             addCards()
             
@@ -109,14 +134,22 @@ class GameScene: SKScene {
             
             playerBeam.zPosition = 2
             playerBeam.position = CGPoint(x: -130, y: -87)
-            playerBeam.size = CGSize(width: Student.studentHealth, height: 80.0)
+            
+            let beamPiece = distanceBetween / Double(playerBeam.numOfLives + alienBeam.numOfLives)
+            playerBeam.size = CGSize(width: beamPiece * Double(playerBeam.numOfLives), height: 80.0)
+        
             self.addChild(playerBeam)
+            
             
             alienBeam.zPosition = 2
             alienBeam.position = CGPoint(x: 150, y: -81)
-            alienBeam.size = CGSize(width: 200, height: 79.0)
+            
+            alienBeam.size = CGSize(width: beamPiece * Double(alienBeam.numOfLives), height: 80.0)
+            
             self.addChild(alienBeam)
             isInBattle = false
+            
+            hasTouched = true
         }
     }
     
@@ -135,16 +168,16 @@ class GameScene: SKScene {
         
         leftCardBG = SKSpriteNode(texture: SKTexture(image: leftCard.cardBG))
         leftCardBG?.zPosition = 15
-        leftCardBG?.position = CGPoint(x: -200, y: 200)
-        leftCardBG?.size = CGSize(width: 180, height: 180)
+        leftCardBG?.position = CGPoint(x: -150, y: 100)
+        leftCardBG?.size = CGSize(width: 220, height: 180)
         
         self.addChild(leftCardBG!)
         
         rightCardBG = SKSpriteNode(texture: SKTexture(image: rightCard.cardBG))
 
         rightCardBG?.zPosition = 15
-        rightCardBG?.position = CGPoint(x: 200, y: 200)
-        rightCardBG?.size = CGSize(width: 180, height: 180)
+        rightCardBG?.position = CGPoint(x: 150, y: 100)
+        rightCardBG?.size = CGSize(width: 220, height: 180)
         
         self.addChild(rightCardBG!)
         
@@ -166,4 +199,5 @@ class GameScene: SKScene {
         
         self.addChild(rightCardText!)
     }
+    
 }

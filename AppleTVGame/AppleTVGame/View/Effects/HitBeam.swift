@@ -14,14 +14,15 @@ class HitBeam: SKSpriteNode {
     //var beamEnd: UIImage
     var beamBodyParticle: SKEmitterNode
     //var beamEndParticle: SKEmitterNode
-    var beamSize: Double = Student.studentHealth + Alien.alienHealth
+    var beamSize: Double = 500
+    var numOfLives: Int
     
-    init(body: UIImage, bodyParticle: SKEmitterNode, size: Double){
+    init(body: UIImage, bodyParticle: SKEmitterNode, livesOfOwner: Int){
         let texture = SKTexture(image: body)
         self.beamBody = body
         self.beamBodyParticle = bodyParticle
         //self.beamEndParticle = endParticle
-        self.beamSize = size
+        self.numOfLives = livesOfOwner
         //self.beamEnd = end
         super.init(texture: texture, color: UIColor.red, size: texture.size())
     }
