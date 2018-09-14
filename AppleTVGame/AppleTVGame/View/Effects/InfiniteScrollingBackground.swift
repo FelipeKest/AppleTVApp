@@ -112,7 +112,11 @@ class InfiniteScrollingBackground {
             let permanentMovementAction = SKAction.moveTo(x: 1.5 * sprites[index].size.width, duration: transitionDuration * Double(numberOfSprites))
             let putsImageOnTheRight = SKAction.moveTo(x: sprites[index].size.width/2 - (sprites[index].size.width * CGFloat(numberOfSprites - 1)), duration: 0.0)
             sprites[index].run(SKAction.sequence([initialMovementAction, putsImageOnTheRight, SKAction.repeatForever(SKAction.sequence([permanentMovementAction, putsImageOnTheRight]))]))
-            scene?.addChild(sprites[index])
+            
+            if (GameScene.isInBattle == false){
+                scene?.addChild(sprites[index])
+            }
+            
         }
     }
     
@@ -125,7 +129,9 @@ class InfiniteScrollingBackground {
             let permanentMovementAction = SKAction.moveTo(x: -1 * sprites[index].size.width/2, duration: transitionDuration * Double(numberOfSprites))
             let putsImageOnTheLeft = SKAction.moveTo(x: sprites[index].size.width/2 + (sprites[index].size.width * CGFloat(numberOfSprites - 1)), duration: 0.0)
             sprites[index].run(SKAction.sequence([initialMovementAction, putsImageOnTheLeft, SKAction.repeatForever(SKAction.sequence([permanentMovementAction, putsImageOnTheLeft]))]))
-            scene?.addChild(sprites[index])
+            if (GameScene.isInBattle == false){
+                scene?.addChild(sprites[index])
+            }
         }
     }
     
@@ -138,7 +144,9 @@ class InfiniteScrollingBackground {
             let permanentMovementAction = SKAction.moveTo(y: 1.5 * sprites[index].size.height, duration: transitionDuration * Double(numberOfSprites))
             let putsImageOnBottomAction = SKAction.moveTo(y: sprites[index].size.height/2 - (sprites[index].size.height * CGFloat(numberOfSprites - 1)), duration: 0.0)
             sprites[index].run(SKAction.sequence([initialMovementAction, putsImageOnBottomAction, SKAction.repeatForever(SKAction.sequence([permanentMovementAction, putsImageOnBottomAction]))]))
-            scene?.addChild(sprites[index])
+            if (GameScene.isInBattle == false){
+                scene?.addChild(sprites[index])
+            }
         }
     }
     
@@ -151,7 +159,9 @@ class InfiniteScrollingBackground {
             let permanentMovementAction = SKAction.moveTo(y: -1 * sprites[index].size.height/2, duration: transitionDuration * Double(numberOfSprites))
             let putsImageOnTopAction = SKAction.moveTo(y: sprites[index].size.height/2 + (sprites[index].size.height * CGFloat(numberOfSprites - 1)), duration: 0.0)
             sprites[index].run(SKAction.sequence([initialMovementAction, putsImageOnTopAction, SKAction.repeatForever(SKAction.sequence([permanentMovementAction, putsImageOnTopAction]))]))
-            scene?.addChild(sprites[index])
+            if (GameScene.isInBattle == false){
+                scene?.addChild(sprites[index])
+            }
         }
     }
     

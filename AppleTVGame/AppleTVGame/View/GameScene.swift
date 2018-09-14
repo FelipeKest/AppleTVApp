@@ -13,7 +13,7 @@ class GameScene: SKScene {
     
     private var label : SKLabelNode?
     var scroller: InfiniteScrollingBackground?
-    var isInBattle: Bool! = false
+    static var isInBattle: Bool! = false
     var hasTouched: Bool! = false
     static public var gameOver: Bool! = false
     var player = Student.instance
@@ -25,7 +25,7 @@ class GameScene: SKScene {
     var distanceBetween: Double = 500
     public var leftCard = NumberCard(cardBG: UIImage(named: "card_neutro")!, numberValue: Float.random(min:0.01, max: 2.99))
     public var rightCard = NumberCard(cardBG: UIImage(named: "card_neutro")!, numberValue: Float.random(min:0.01, max: 2.99))
-    var cardsNeeded: Bool! = false
+    var cardsNeeded: Bool! = true
     public var leftCardBG: SKSpriteNode?
     public var rightCardBG: SKSpriteNode?
     public var leftCardText: SKLabelNode?
@@ -33,7 +33,7 @@ class GameScene: SKScene {
     
     init(battleState: Bool) {
         super.init()
-        self.isInBattle = battleState
+        GameScene.isInBattle = battleState
     }
     
     
@@ -54,7 +54,13 @@ class GameScene: SKScene {
             print("Alien leva hit = ",alien.alienHealth)
             
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
-                self.changeCardValue()})
+                self.changeCardValue()
+                
+                Attack.increase(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
+                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
+                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
+                self.alienBeam.size = CGSize(width: beamPiece * Double(self.alien.alienHealth), height: 80.0)
+            })
             
 
         }
@@ -68,7 +74,14 @@ class GameScene: SKScene {
             print("Alien da hit = ",alien.alienHealth)
             
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
-                self.changeCardValue()})
+                self.changeCardValue()
+                
+                Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
+                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
+                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
+                self.alienBeam.size = CGSize(width: beamPiece * Double(self.alien.alienHealth), height: 80.0)
+            })
+
         }
     }
     
@@ -86,7 +99,13 @@ class GameScene: SKScene {
             print("Alien leva hit = ", alien.alienHealth)
             
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
-                self.changeCardValue()})
+                self.changeCardValue()
+                Attack.increase(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
+                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
+                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
+                self.alienBeam.size = CGSize(width: beamPiece * Double(self.alien.alienHealth), height: 80.0)
+            })
+            
         }
         else {
             print(Student.studentHealth)
@@ -98,7 +117,13 @@ class GameScene: SKScene {
             print("Alien da hit = ", alien.alienHealth)
             
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
-                self.changeCardValue()})
+                self.changeCardValue()
+                Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
+                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
+                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
+                self.alienBeam.size = CGSize(width: beamPiece * Double(self.alien.alienHealth), height: 80.0)
+            })
+            
         }
     }
     
@@ -129,13 +154,12 @@ class GameScene: SKScene {
     
     func touchDown(atPoint pos : CGPoint) {
         scroller?.stopScroll()
-        isInBattle = true
-        cardsNeeded = true
+        GameScene.isInBattle = true
         
-        if isInBattle && hasTouched == true {
-            //Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
-
+        if cardsNeeded == true{
+            addCards()
         }
+        
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -170,41 +194,7 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        if isInBattle == true && hasTouched == false{
-            
-            addCards()
-            
-            player.zPosition = 3
-            player.position = CGPoint(x: -300, y: -80)
-            player.texture = SKTexture(image: player.studentImages[0])
-            player.size = CGSize(width: 100.0, height: 150.0)
-            self.addChild(player)
-            
-            alien.zPosition = 3
-            alien.position = CGPoint(x: 300, y: -80)
-            alien.texture = SKTexture(image: alien.alienImages[0])
-            alien.size = CGSize(width: 100.0, height: 100.0)
-            self.addChild(alien)
-            
-            playerBeam.zPosition = 2
-            playerBeam.position = CGPoint(x: -130, y: -87)
-            
-            let beamPiece = distanceBetween / Double(playerBeam.numOfLives + alienBeam.numOfLives)
-            playerBeam.size = CGSize(width: beamPiece * Double(playerBeam.numOfLives), height: 80.0)
         
-            self.addChild(playerBeam)
-            
-            
-            alienBeam.zPosition = 2
-            alienBeam.position = CGPoint(x: 150, y: -81)
-            
-            alienBeam.size = CGSize(width: beamPiece * Double(alienBeam.numOfLives), height: 80.0)
-            
-            self.addChild(alienBeam)
-            isInBattle = false
-            
-            hasTouched = true
-        }
         
         if alien.alienHealth == 0 {
             // passa de fase
@@ -212,12 +202,14 @@ class GameScene: SKScene {
             alien.removeFromParent()
             playerBeam.removeFromParent()
             //PLAYER muda de animacao
-            alien.alienHealth = Student.studentHealth - 2
+           // alien.alienHealth = Student.studentHealth - 2
             Student.studentHealth = 3
             scroller?.scroll()
+            
         }
         if Student.studentHealth == 0 {
             // game over
+            GameScene.isInBattle = false
             GameScene.gameOver = true
         }
     }
@@ -264,6 +256,43 @@ class GameScene: SKScene {
         rightCardText?.position = (rightCardBG?.position)!
         
         self.addChild(rightCardText!)
+        cardsNeeded = false
+        
+        
+        
+        //if isInBattle == true && hasTouched == false{
+            
+            player.zPosition = 3
+            player.position = CGPoint(x: -300, y: -80)
+            player.texture = SKTexture(image: player.studentImages[0])
+            player.size = CGSize(width: 100.0, height: 150.0)
+            self.addChild(player)
+            
+            alien.zPosition = 3
+            alien.position = CGPoint(x: 300, y: -80)
+            alien.texture = SKTexture(image: alien.alienImages[0])
+            alien.size = CGSize(width: 100.0, height: 100.0)
+            self.addChild(alien)
+            
+            playerBeam.zPosition = 2
+            playerBeam.position = CGPoint(x: -130, y: -87)
+            
+            let beamPiece = distanceBetween / Double(playerBeam.numOfLives + alienBeam.numOfLives)
+            playerBeam.size = CGSize(width: beamPiece * Double(playerBeam.numOfLives), height: 80.0)
+            
+            self.addChild(playerBeam)
+            
+            
+            alienBeam.zPosition = 2
+            alienBeam.position = CGPoint(x: 150, y: -81)
+            
+            alienBeam.size = CGSize(width: beamPiece * Double(alienBeam.numOfLives), height: 80.0)
+            
+            self.addChild(alienBeam)
+            //isInBattle = false
+            
+          //  hasTouched = true
+        //}
     }
     
     func changeCardValue () {
