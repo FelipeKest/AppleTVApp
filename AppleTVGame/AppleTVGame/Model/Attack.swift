@@ -12,18 +12,17 @@ import SpriteKit
 class Attack {
     
     //MARK: Public Functions
-    static func increase(alunoLife: Double, alienLife: Double, ammount: Double) -> (newStudentLife: Double, newAlienLife: Double) {
-        let novaVidaAluno = alunoLife + ammount
-        let novaVidaAlien = alienLife - ammount
+    static func increase( alunoLife: inout Double, alienLife: inout Double, ammount: Double) {
+        alunoLife += ammount
+        alienLife -= ammount
     
-        return (novaVidaAluno, novaVidaAlien)
     }
     
-    static func decrease(alunoLife: Double, alienLife: Double, ammount: Double) -> (newStudentLife: Double, newAlienLife: Double) {
-        let novaVidaAluno = alunoLife - ammount
-        let novaVidaAlien = alienLife + ammount
-        
-        return (novaVidaAluno, novaVidaAlien)
+    static func decrease(alunoLife: inout Double, alienLife: inout Double, ammount: Double) {
+        alunoLife -= ammount
+        alienLife += ammount
+        print(alienLife)
+        print(alunoLife)
     }
 
 }

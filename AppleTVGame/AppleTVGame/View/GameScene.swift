@@ -16,12 +16,12 @@ class GameScene: SKScene {
     var isInBattle: Bool! = false
     var hasTouched: Bool! = false
     var player = Student.instance
-    var playerBeam = HitBeam(body: UIImage(named: "beam_player")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Player")!, lives: 3)
-    var alien = Alien(life: 200.0, imagensAlien: [UIImage(named: "Alien1")!])
-    var alienBeam = HitBeam(body: UIImage(named: "beam_alien")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Alien")!, lives: 2)
+    var playerBeam = HitBeam(body: UIImage(named: "beam_player")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Player")!, livesOfOwner: 3)
+    var alien = Alien(life: 2, imagensAlien: [UIImage(named: "Alien1")!])
+    var alienBeam = HitBeam(body: UIImage(named: "beam_alien")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Alien")!, livesOfOwner: 2)
     var swipeLeftInstance: UISwipeGestureRecognizer?
     var swipeRightInstance: UISwipeGestureRecognizer?
-    var distanceBetween: Double?
+    var distanceBetween: Double? = HitBeam.beamSize * 2
     
     
     
@@ -73,7 +73,11 @@ class GameScene: SKScene {
     func touchDown(atPoint pos : CGPoint) {
         scroller?.stopScroll()
         isInBattle = true
-        //Attack.decrease(alunoLife: Student.studentHealth, alienLife: alien.alienHealth, ammount: 50)
+        if isInBattle && hasTouched == true {
+            Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
+        }
+        
+        
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -104,30 +108,31 @@ class GameScene: SKScene {
     
     
     override func update(_ currentTime: TimeInterval) {
+        var beamPortion = distanceBetween!/(alien.alienHealth + Student.studentHealth)
+        
         // Called before each frame is rendered
         if isInBattle == true && hasTouched == false{
             player.zPosition = 3
-            player.position = CGPoint(x: -300, y: -80)
+            player.position = CGPoint(x: -320, y: -50)
             player.texture = SKTexture(image: player.studentImages[0])
-            player.size = CGSize(width: 100.0, height: 150.0)
+            player.size = CGSize(width: 100.0, height: 200.0)
             self.addChild(player)
 
             alien.zPosition = 3
-            alien.position = CGPoint(x: 300, y: -80)
+            alien.position = CGPoint(x: 359, y: -70.876)
             alien.texture = SKTexture(image: alien.alienImages[0])
             alien.size = CGSize(width: 100.0, height: 100.0)
             self.addChild(alien)
             
-            
 
             playerBeam.zPosition = 2
-            playerBeam.position = CGPoint(x: -130, y: -87)
-            playerBeam.size = CGSize(width: Student.studentHealth, height: 80.0)
+            playerBeam.position = CGPoint(x: -91.029, y: -70.876)
+            playerBeam.size = CGSize(width: beamPortion*Student.studentHealth, height: 80.0)
             self.addChild(playerBeam)
 
             alienBeam.zPosition = 2
-            alienBeam.position = CGPoint(x: 150, y: -81)
-            alienBeam.size = CGSize(width: alien.alienHealth, height: 79.0)
+            alienBeam.position = CGPoint(x: 190.843, y: -67.876)
+            alienBeam.size = CGSize(width: beamPortion*alien.alienHealth, height: 79.0)
             self.addChild(alienBeam)
             
             hasTouched = true
