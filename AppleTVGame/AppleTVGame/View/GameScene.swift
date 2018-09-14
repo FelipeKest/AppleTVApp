@@ -15,6 +15,7 @@ class GameScene: SKScene {
     var scroller: InfiniteScrollingBackground?
     var isInBattle: Bool! = false
     var hasTouched: Bool! = false
+    static public var gameOver: Bool! = false
     var player = Student.instance
     var playerBeam = HitBeam(body: UIImage(named: "beam_player")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Player")!, livesOfOwner: 3)
     var alien = Alien(life: 2, imagensAlien: [UIImage(named: "Alien1")!])
@@ -51,6 +52,10 @@ class GameScene: SKScene {
             leftCardBG?.texture = SKTexture(imageNamed: "card_correto")
             print("Estudante da hit = ",Student.studentHealth)
             print("Alien leva hit = ",alien.alienHealth)
+            
+            SKAction.wait(forDuration: 2.0)
+            
+            
 
         }
         else {
@@ -191,6 +196,21 @@ class GameScene: SKScene {
             
             hasTouched = true
         }
+        
+        if alien.alienHealth == 0 {
+            // passa de fase
+            alienBeam.removeFromParent()
+            alien.removeFromParent()
+            playerBeam.removeFromParent()
+            //PLAYER muda de animacao
+            alien.alienHealth = Student.studentHealth - 2
+            Student.studentHealth = 3
+            scroller?.scroll()
+        }
+        if Student.studentHealth == 0 {
+            // game over
+            GameScene.gameOver = true
+        }
     }
     
     
@@ -237,4 +257,16 @@ class GameScene: SKScene {
         self.addChild(rightCardText!)
     }
     
+    func changeCardValue () {
+        leftCard.numberValue = Float.random(min:0.01, max: 2.99)
+        leftCard.numberValue = Float.random(min:0.01, max: 2.99)
+        leftCard.convertNumber(value: leftCard.numberValue)
+        rightCard.convertNumber(value: rightCard.numberValue)
+        
+        leftCardBG?.texture = SKTexture(imageNamed: "card_neutro")
+        rightCardBG?.texture = SKTexture(imageNamed: "card_neutro")
+        
+        leftCardText?.text = leftCard.numberDisplay
+        rightCardText?.text = rightCard.numberDisplay
+    }
 }

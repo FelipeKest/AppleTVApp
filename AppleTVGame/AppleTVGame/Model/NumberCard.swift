@@ -14,7 +14,7 @@ typealias Rational = (num : Int, den : Int)
 public class NumberCard {
     
     var cardBG: UIImage!
-    let numberValue: Float!
+    var numberValue: Float!
     var numberDisplay: String?
     
     
