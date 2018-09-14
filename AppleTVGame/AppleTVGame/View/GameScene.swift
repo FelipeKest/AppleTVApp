@@ -53,8 +53,8 @@ class GameScene: SKScene {
             print("Estudante da hit = ",Student.studentHealth)
             print("Alien leva hit = ",alien.alienHealth)
             
-            SKAction.wait(forDuration: 2.0)
-            
+            Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
+                self.changeCardValue()})
             
 
         }
@@ -66,6 +66,9 @@ class GameScene: SKScene {
             leftCardBG?.texture = SKTexture(imageNamed: "card_errado")
             print("Estudante leva hit = ",Student.studentHealth)
             print("Alien da hit = ",alien.alienHealth)
+            
+            Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
+                self.changeCardValue()})
         }
     }
     
@@ -81,6 +84,9 @@ class GameScene: SKScene {
             rightCardBG?.texture = SKTexture(imageNamed: "card_correto")
             print("Estudante da hit = ", Student.studentHealth)
             print("Alien leva hit = ", alien.alienHealth)
+            
+            Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
+                self.changeCardValue()})
         }
         else {
             print(Student.studentHealth)
@@ -90,6 +96,9 @@ class GameScene: SKScene {
             rightCardBG?.texture = SKTexture(imageNamed: "card_errado")
             print("Estudante leva hit = ", Student.studentHealth)
             print("Alien da hit = ", alien.alienHealth)
+            
+            Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
+                self.changeCardValue()})
         }
     }
     
@@ -259,7 +268,7 @@ class GameScene: SKScene {
     
     func changeCardValue () {
         leftCard.numberValue = Float.random(min:0.01, max: 2.99)
-        leftCard.numberValue = Float.random(min:0.01, max: 2.99)
+        rightCard.numberValue = Float.random(min:0.01, max: 2.99)
         leftCard.convertNumber(value: leftCard.numberValue)
         rightCard.convertNumber(value: rightCard.numberValue)
         
@@ -268,5 +277,7 @@ class GameScene: SKScene {
         
         leftCardText?.text = leftCard.numberDisplay
         rightCardText?.text = rightCard.numberDisplay
+        
+        
     }
 }
