@@ -47,7 +47,7 @@ class GameScene: SKScene {
             // ganha o ponto e da hit no alien
             print("Estudante antes de levar",Student.studentHealth)
             print("Alien antes de levar ",alien.alienHealth)
-            Attack.increase(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
+            //Attack.increase(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
             //leftCard.changeBG(correct: true)
             leftCardBG?.texture = SKTexture(imageNamed: "card_correto")
             print("Estudante da hit = ",Student.studentHealth)
@@ -67,7 +67,7 @@ class GameScene: SKScene {
         else {
             print(Student.studentHealth)
             print(alien.alienHealth)
-            Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
+            //Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
             //leftCard.changeBG(correct: false)
             leftCardBG?.texture = SKTexture(imageNamed: "card_errado")
             print("Estudante leva hit = ",Student.studentHealth)
@@ -92,7 +92,7 @@ class GameScene: SKScene {
             // ganha e da hit no alien
             print("Estudante antes de dar =", Student.studentHealth)
             print("Alien antes de levar =", alien.alienHealth)
-            Attack.increase(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
+            //Attack.increase(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
             //rightCard.changeBG(correct: true)
             rightCardBG?.texture = SKTexture(imageNamed: "card_correto")
             print("Estudante da hit = ", Student.studentHealth)
@@ -110,8 +110,8 @@ class GameScene: SKScene {
         else {
             print(Student.studentHealth)
             print(alien.alienHealth)
-            Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
-            rightCard.changeBG(correct: false)
+            //Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
+            //rightCard.changeBG(correct: false)
             rightCardBG?.texture = SKTexture(imageNamed: "card_errado")
             print("Estudante leva hit = ", Student.studentHealth)
             print("Alien da hit = ", alien.alienHealth)
@@ -201,11 +201,15 @@ class GameScene: SKScene {
             alienBeam.removeFromParent()
             alien.removeFromParent()
             playerBeam.removeFromParent()
+            leftCardBG?.removeFromParent()
+            rightCardBG?.removeFromParent()
+            leftCardText?.removeFromParent()
+            rightCardText?.removeFromParent()
             //PLAYER muda de animacao
-           // alien.alienHealth = Student.studentHealth - 2
+            alien.alienHealth = Student.studentHealth - 2
             Student.studentHealth = 3
-            scroller?.scroll()
-            
+            scroller?.resumeScroll()
+         
         }
         if Student.studentHealth == 0 {
             // game over

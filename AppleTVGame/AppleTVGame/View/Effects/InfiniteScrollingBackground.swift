@@ -113,9 +113,9 @@ class InfiniteScrollingBackground {
             let putsImageOnTheRight = SKAction.moveTo(x: sprites[index].size.width/2 - (sprites[index].size.width * CGFloat(numberOfSprites - 1)), duration: 0.0)
             sprites[index].run(SKAction.sequence([initialMovementAction, putsImageOnTheRight, SKAction.repeatForever(SKAction.sequence([permanentMovementAction, putsImageOnTheRight]))]))
             
-            if (GameScene.isInBattle == false){
+            //if (GameScene.isInBattle == false){
                 scene?.addChild(sprites[index])
-            }
+            //}
             
         }
     }
@@ -129,9 +129,9 @@ class InfiniteScrollingBackground {
             let permanentMovementAction = SKAction.moveTo(x: -1 * sprites[index].size.width/2, duration: transitionDuration * Double(numberOfSprites))
             let putsImageOnTheLeft = SKAction.moveTo(x: sprites[index].size.width/2 + (sprites[index].size.width * CGFloat(numberOfSprites - 1)), duration: 0.0)
             sprites[index].run(SKAction.sequence([initialMovementAction, putsImageOnTheLeft, SKAction.repeatForever(SKAction.sequence([permanentMovementAction, putsImageOnTheLeft]))]))
-            if (GameScene.isInBattle == false){
+            //if (GameScene.isInBattle == false){
                 scene?.addChild(sprites[index])
-            }
+            //}
         }
     }
     
@@ -169,7 +169,14 @@ class InfiniteScrollingBackground {
     public func stopScroll(){
         let numberOfSprites = sprites.count
         for index in 0...numberOfSprites - 1 {
-            sprites[index].removeAllActions()
+            sprites[index].speed = 0
+        }
+    }
+    
+    public func resumeScroll(){
+        let numberOfSprites = sprites.count
+        for index in 0...numberOfSprites - 1 {
+            sprites[index].speed = 1
         }
     }
     
