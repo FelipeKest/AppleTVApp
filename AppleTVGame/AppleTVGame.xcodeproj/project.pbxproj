@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6742F82A214A81A700CF0216 /* NumberCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6742F829214A81A700CF0216 /* NumberCard.swift */; };
 		6742F82E214AF2FE00CF0216 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6742F82D214AF2FE00CF0216 /* Extensions.swift */; };
+		6742F830215015C400CF0216 /* TitleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6742F82F215015C300CF0216 /* TitleScene.sks */; };
+		6742F834215016D600CF0216 /* TitleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6742F833215016D600CF0216 /* TitleScreen.swift */; };
 		9118ACE8214876DD000693DD /* Alien.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9118ACE5214876DD000693DD /* Alien.swift */; };
 		9118ACE9214876DD000693DD /* Attack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9118ACE6214876DD000693DD /* Attack.swift */; };
 		9118ACEA214876DD000693DD /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9118ACE7214876DD000693DD /* Student.swift */; };
@@ -47,6 +49,8 @@
 /* Begin PBXFileReference section */
 		6742F829214A81A700CF0216 /* NumberCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberCard.swift; sourceTree = "<group>"; };
 		6742F82D214AF2FE00CF0216 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		6742F82F215015C300CF0216 /* TitleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TitleScene.sks; sourceTree = "<group>"; };
+		6742F833215016D600CF0216 /* TitleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScreen.swift; sourceTree = "<group>"; };
 		9118ACE5214876DD000693DD /* Alien.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alien.swift; sourceTree = "<group>"; };
 		9118ACE6214876DD000693DD /* Attack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
 		9118ACE7214876DD000693DD /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
@@ -161,6 +165,8 @@
 				91C0A85221494A4F00495CA0 /* Characters */,
 				91C0A85321494A6300495CA0 /* Effects */,
 				913183A821308968009A6CF0 /* GameScene.sks */,
+				6742F82F215015C300CF0216 /* TitleScene.sks */,
+				6742F833215016D600CF0216 /* TitleScreen.swift */,
 				913183B021308968009A6CF0 /* Main.storyboard */,
 				913183AC21308968009A6CF0 /* GameScene.swift */,
 				6742F82D214AF2FE00CF0216 /* Extensions.swift */,
@@ -308,6 +314,7 @@
 				91F757FD2149B07B0065C045 /* BeamBaseParticle_Alien.sks in Resources */,
 				913183B42130896A009A6CF0 /* Assets.xcassets in Resources */,
 				913183AB21308968009A6CF0 /* Actions.sks in Resources */,
+				6742F830215015C400CF0216 /* TitleScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +341,7 @@
 			files = (
 				913183AD21308968009A6CF0 /* GameScene.swift in Sources */,
 				91ADC72721408A9000946C92 /* InfiniteScrollingBackground.swift in Sources */,
+				6742F834215016D600CF0216 /* TitleScreen.swift in Sources */,
 				9118ACEC21487717000693DD /* HitBeam.swift in Sources */,
 				913183AF21308968009A6CF0 /* GameViewController.swift in Sources */,
 				6742F82A214A81A700CF0216 /* NumberCard.swift in Sources */,

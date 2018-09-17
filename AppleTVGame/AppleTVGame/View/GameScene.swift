@@ -158,7 +158,7 @@ class GameScene: SKScene {
         scroller?.zPosition = 1
         
         player.zPosition = 3
-        player.position = CGPoint(x: -370, y: -150)
+        player.position = CGPoint(x: -360, y: -150)
         player.texture = SKTexture(image: player.studentImages[0])
         player.size = CGSize(width: 175.0, height: 250.0)
         self.addChild(player)
@@ -223,6 +223,7 @@ class GameScene: SKScene {
             rightCardBG?.removeFromParent()
             leftCardText?.removeFromParent()
             rightCardText?.removeFromParent()
+            GameScene.isInBattle = false
             
             //PLAYER muda de animacao
             
@@ -294,7 +295,7 @@ class GameScene: SKScene {
         alien.size = CGSize(width: 200.0, height: 200.0)
         self.addChild(alien)
         
-        playerBeam.zPosition = 2
+        playerBeam.zPosition = 5
         playerBeam.position = CGPoint(x: -290, y: -160)
         playerBeam.anchorPoint = CGPoint(x: 0.0, y: 0.5)
         

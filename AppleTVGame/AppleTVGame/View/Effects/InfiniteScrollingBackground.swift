@@ -4,8 +4,14 @@
 //  github.com/ThiagoAM
 //
 
+
 import SpriteKit
 
+/**
+ - Author: Thiago Martins
+ - Version: 0.1
+ - Important: Documentar é incrível
+ */
 class InfiniteScrollingBackground {
     
     // MARK: Enumerations
@@ -61,7 +67,6 @@ class InfiniteScrollingBackground {
      - scrollDirection: use .top, .bottom, .left or .right
      - speed: the lower, the faster. Needs to be bigger than 0
     **/
-    
     init?(images : [UIImage], scene : SKScene, scrollDirection : ScrollDirection, speed : TimeInterval) {
         
         // handling invalid initializations:
@@ -193,6 +198,14 @@ class InfiniteScrollingBackground {
         }
     }
     
+    /**
+     Retorna o tamanho de um sprite
+     - Parameters:
+        - direction: a direcao que esta scrollando
+        - imageSize: o tamanho da imagem
+        - scene: a cena em que o sprite esta
+        - Returns: retorna o tamanho do sprite
+    */
     private static func calculateSpriteSize(_ direction : ScrollDirection, _ imageSize : CGSize, _ scene : SKScene) -> CGSize {
         var size = CGSize()
         switch direction {
