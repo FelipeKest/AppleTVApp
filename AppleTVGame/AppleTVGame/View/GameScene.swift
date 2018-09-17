@@ -148,17 +148,27 @@ class GameScene: SKScene {
         
         // (Optional) Changing the instance's zPosition:
         scroller?.zPosition = 1
+        
+        player.zPosition = 3
+        player.position = CGPoint(x: -300, y: -80)
+        player.texture = SKTexture(image: player.studentImages[0])
+        player.size = CGSize(width: 100.0, height: 150.0)
+        self.addChild(player)
+        
+        Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false, block: { (timer) in
+            self.scroller?.stopScroll()
+
+            if self.cardsNeeded == true{
+                self.setUpBattle()
+            }
+        })
 
     }
     
     
+    
+    
     func touchDown(atPoint pos : CGPoint) {
-        scroller?.stopScroll()
-        GameScene.isInBattle = true
-        
-        if cardsNeeded == true{
-            addCards()
-        }
         
     }
     
@@ -211,6 +221,10 @@ class GameScene: SKScene {
             alien.alienHealth = Student.studentHealth - 2
             Student.studentHealth = 3
             scroller?.resumeScroll()
+            
+            Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false, block: { (timer) in
+                self.setUpBattle()
+            })
          
         }
         if Student.studentHealth == 0 {
@@ -222,7 +236,9 @@ class GameScene: SKScene {
     
     
     
-    func addCards () {
+    func setUpBattle () {
+        self.scroller?.stopScroll()
+        
         print("LeftValue: \(leftCard.numberValue)")
         print("RightValue: \(rightCard.numberValue)")
         
@@ -263,43 +279,35 @@ class GameScene: SKScene {
         
         self.addChild(rightCardText!)
         cardsNeeded = false
+            
+        alien.zPosition = 3
+        alien.position = CGPoint(x: 300, y: -80)
+        alien.texture = SKTexture(image: alien.alienImages[0])
+        alien.size = CGSize(width: 100.0, height: 100.0)
+        self.addChild(alien)
+        
+        playerBeam.zPosition = 2
+        playerBeam.position = CGPoint(x: -130, y: -87)
+        
+        let beamPiece = distanceBetween / Double(playerBeam.numOfLives + alienBeam.numOfLives)
+        playerBeam.size = CGSize(width: beamPiece * Double(playerBeam.numOfLives), height: 80.0)
+        
+        self.addChild(playerBeam)
         
         
+        alienBeam.zPosition = 2
+        alienBeam.position = CGPoint(x: 150, y: -81)
         
-        //if isInBattle == true && hasTouched == false{
-            
-            player.zPosition = 3
-            player.position = CGPoint(x: -300, y: -80)
-            player.texture = SKTexture(image: player.studentImages[0])
-            player.size = CGSize(width: 100.0, height: 150.0)
-            self.addChild(player)
-            
-            alien.zPosition = 3
-            alien.position = CGPoint(x: 300, y: -80)
-            alien.texture = SKTexture(image: alien.alienImages[0])
-            alien.size = CGSize(width: 100.0, height: 100.0)
-            self.addChild(alien)
-            
-            playerBeam.zPosition = 2
-            playerBeam.position = CGPoint(x: -130, y: -87)
-            
-            let beamPiece = distanceBetween / Double(playerBeam.numOfLives + alienBeam.numOfLives)
-            playerBeam.size = CGSize(width: beamPiece * Double(playerBeam.numOfLives), height: 80.0)
-            
-            self.addChild(playerBeam)
-            
-            
-            alienBeam.zPosition = 2
-            alienBeam.position = CGPoint(x: 150, y: -81)
-            
-            alienBeam.size = CGSize(width: beamPiece * Double(alienBeam.numOfLives), height: 80.0)
-            
-            self.addChild(alienBeam)
-            //isInBattle = false
-            
-          //  hasTouched = true
+        alienBeam.size = CGSize(width: beamPiece * Double(alienBeam.numOfLives), height: 80.0)
+        
+        self.addChild(alienBeam)
+        //isInBattle = false
+        
+        //hasTouched = true
         //}
     }
+    
+    
     
     func changeCardValue () {
         leftCard.numberValue = Float.random(min:0.01, max: 2.99)
