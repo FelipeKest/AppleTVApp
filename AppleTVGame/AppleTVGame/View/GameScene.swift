@@ -22,7 +22,7 @@ class GameScene: SKScene {
     var alienBeam = HitBeam(body: UIImage(named: "beam_alien")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Alien")!, livesOfOwner: 2)
     var swipeLeftInstance: UISwipeGestureRecognizer?
     var swipeRightInstance: UISwipeGestureRecognizer?
-    var distanceBetween: Double = 500
+    var distanceBetween: Double = 580
     public var leftCard = NumberCard(cardBG: UIImage(named: "card_neutro")!, numberValue: Float.random(min:0.01, max: 2.99))
     public var rightCard = NumberCard(cardBG: UIImage(named: "card_neutro")!, numberValue: Float.random(min:0.01, max: 2.99))
     var cardsNeeded: Bool! = true
@@ -60,6 +60,8 @@ class GameScene: SKScene {
                 let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
                 self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
                 self.alienBeam.size = CGSize(width: beamPiece * Double(self.alien.alienHealth), height: 80.0)
+                let beamPieceStep = CGPoint(x: beamPiece, y: 0)
+                self.alienBeam.position = CGPoint(x: self.alienBeam.position.x + beamPieceStep.x/2, y: self.alienBeam.position.y)
             })
             
 
@@ -80,6 +82,8 @@ class GameScene: SKScene {
                 let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
                 self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
                 self.alienBeam.size = CGSize(width: beamPiece * Double(self.alien.alienHealth), height: 80.0)
+                let beamPieceStep = CGPoint(x: beamPiece, y: 0)
+                self.alienBeam.position = CGPoint(x: self.alienBeam.position.x - beamPieceStep.x/2, y: self.alienBeam.position.y)
             })
 
         }
@@ -104,6 +108,8 @@ class GameScene: SKScene {
                 let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
                 self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
                 self.alienBeam.size = CGSize(width: beamPiece * Double(self.alien.alienHealth), height: 80.0)
+                let beamPieceStep = CGPoint(x: beamPiece, y: 0)
+                self.alienBeam.position = CGPoint(x: self.alienBeam.position.x + beamPieceStep.x/2, y: self.alienBeam.position.y)
             })
             
         }
@@ -122,6 +128,8 @@ class GameScene: SKScene {
                 let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
                 self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
                 self.alienBeam.size = CGSize(width: beamPiece * Double(self.alien.alienHealth), height: 80.0)
+                let beamPieceStep = CGPoint(x: beamPiece, y: 0)
+                self.alienBeam.position = CGPoint(x: self.alienBeam.position.x - beamPieceStep.x/2, y: self.alienBeam.position.y)
             })
             
         }
@@ -150,9 +158,9 @@ class GameScene: SKScene {
         scroller?.zPosition = 1
         
         player.zPosition = 3
-        player.position = CGPoint(x: -300, y: -80)
+        player.position = CGPoint(x: -370, y: -150)
         player.texture = SKTexture(image: player.studentImages[0])
-        player.size = CGSize(width: 100.0, height: 150.0)
+        player.size = CGSize(width: 175.0, height: 250.0)
         self.addChild(player)
         
         Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false, block: { (timer) in
@@ -281,13 +289,14 @@ class GameScene: SKScene {
         cardsNeeded = false
             
         alien.zPosition = 3
-        alien.position = CGPoint(x: 300, y: -80)
+        alien.position = CGPoint(x: 300, y: -180)
         alien.texture = SKTexture(image: alien.alienImages[0])
-        alien.size = CGSize(width: 100.0, height: 100.0)
+        alien.size = CGSize(width: 200.0, height: 200.0)
         self.addChild(alien)
         
         playerBeam.zPosition = 2
-        playerBeam.position = CGPoint(x: -130, y: -87)
+        playerBeam.position = CGPoint(x: -290, y: -160)
+        playerBeam.anchorPoint = CGPoint(x: 0.0, y: 0.5)
         
         let beamPiece = distanceBetween / Double(playerBeam.numOfLives + alienBeam.numOfLives)
         playerBeam.size = CGSize(width: beamPiece * Double(playerBeam.numOfLives), height: 80.0)
@@ -295,8 +304,9 @@ class GameScene: SKScene {
         self.addChild(playerBeam)
         
         
-        alienBeam.zPosition = 2
-        alienBeam.position = CGPoint(x: 150, y: -81)
+        alienBeam.zPosition = 5
+        alienBeam.position = CGPoint(x: 180, y: -160)
+        alienBeam.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
         alienBeam.size = CGSize(width: beamPiece * Double(alienBeam.numOfLives), height: 80.0)
         
