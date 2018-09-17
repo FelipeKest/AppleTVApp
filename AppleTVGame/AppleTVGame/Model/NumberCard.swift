@@ -16,25 +16,47 @@ public class NumberCard {
     var cardBG: UIImage!
     var numberValue: Float!
     var numberDisplay: String?
+    let numberFormatter = NumberFormatter()
+    
+    
+    func setDigits(numOfDigits: Int, value: Float) -> String?{
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumFractionDigits = numOfDigits
+        numberFormatter.roundingMode = .down
+        
+        let formatedValue = numberFormatter.string(from: (NSNumber(value: value)))
+        return formatedValue
+    }
+    
+    func setPercentageDigits(numOfDigits: Int, value: Float) -> String?{
+        let newValue = value*100
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumFractionDigits = numOfDigits
+        numberFormatter.roundingMode = .down
+        
+        let formatedValue = numberFormatter.string(from: (NSNumber(value: newValue)))
+        return formatedValue
+    }
     
     
     func convertNumber(value: Float){
         let possibility = arc4random_uniform(3) + 1
         
         switch possibility {
-        case 1: //só mostra o número como o valor decimal
+        case 1: //só mostra o número como o valor decimal. Update: Indo
+            let formattedValue = setDigits(numOfDigits: 2, value: value)
+            self.numberDisplay = formattedValue
             
-            self.numberDisplay = "\(value)"
-            //print ("\(String(describing: self.numberDisplay))")
-            
-        case 2: //mostra número como porcentagem
-            
-            let cardString = "\(100 * value)%"
+        case 2: //mostra número como porcentagem.
+            let formattedValue = setPercentageDigits(numOfDigits: 0, value: value)!
+            let cardString = "\(String(describing: formattedValue))%"
             self.numberDisplay = cardString
-            //print ("\(String(describing: self.numberDisplay))")
+            
+            //print("\(String(describing: self.numberDisplay))")
             
         case 3: //mostra o número como fração
             
+            numberFormatter.string(from: NSNumber(value: value))
             var fraction: Rational
             
             fraction = rationalApproximation(of: Double(numberValue))
@@ -76,7 +98,7 @@ public class NumberCard {
 
 //essa função não faz parte da classe
 
-func rationalApproximation(of x0 : Double, withPrecision eps : Double = 1.0E-6) -> Rational {
+func rationalApproximation(of x0 : Double, withPrecision eps : Double = 1.0E-2) -> Rational {
     var x = x0
     var a = x.rounded(.down)
     var (h1, k1, h, k) = (1, 0, Int(a), 1)

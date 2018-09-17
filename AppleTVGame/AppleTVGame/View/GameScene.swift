@@ -205,7 +205,9 @@ class GameScene: SKScene {
             rightCardBG?.removeFromParent()
             leftCardText?.removeFromParent()
             rightCardText?.removeFromParent()
+            
             //PLAYER muda de animacao
+            
             alien.alienHealth = Student.studentHealth - 2
             Student.studentHealth = 3
             scroller?.resumeScroll()
