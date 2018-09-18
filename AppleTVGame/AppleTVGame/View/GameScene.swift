@@ -14,6 +14,7 @@ class GameScene: SKScene {
     private var label : SKLabelNode?
     var scroller: InfiniteScrollingBackground?
     static var isInBattle: Bool! = false
+    var firstBattleDone: Bool! = false
     var hasTouched: Bool! = false
     static public var gameOver: Bool! = false
     var player = Student.instance
@@ -168,6 +169,7 @@ class GameScene: SKScene {
 
             if self.cardsNeeded == true{
                 self.setUpBattle()
+                self.firstBattleDone = true
             }
         })
 
@@ -295,21 +297,25 @@ class GameScene: SKScene {
         alien.size = CGSize(width: 200.0, height: 200.0)
         self.addChild(alien)
         
+        let beamPiece = distanceBetween / Double(Student.studentHealth + alien.alienHealth)
+        let beamPieceStep = CGPoint(x: beamPiece, y: 0)
+        
         playerBeam.zPosition = 5
         playerBeam.position = CGPoint(x: -290, y: -160)
         playerBeam.anchorPoint = CGPoint(x: 0.0, y: 0.5)
         
-        let beamPiece = distanceBetween / Double(playerBeam.numOfLives + alienBeam.numOfLives)
-        playerBeam.size = CGSize(width: beamPiece * Double(playerBeam.numOfLives), height: 80.0)
+        playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
         
         self.addChild(playerBeam)
         
         
         alienBeam.zPosition = 5
         alienBeam.position = CGPoint(x: 180, y: -160)
-        alienBeam.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
-        alienBeam.size = CGSize(width: beamPiece * Double(alienBeam.numOfLives), height: 80.0)
+        alienBeam.size = CGSize(width: beamPiece * Double(alien.alienHealth), height: 80.0)
+        if firstBattleDone == true {
+        alienBeam.position = CGPoint(x: self.alienBeam.position.x - beamPieceStep.x/2, y: self.alienBeam.position.y)
+        }
         
         self.addChild(alienBeam)
         //isInBattle = false
