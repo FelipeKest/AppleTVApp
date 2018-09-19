@@ -82,7 +82,7 @@ class GameScene: SKScene {
             print("Alien da hit = ",alien.alienHealth)
             
             let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
-            let beamShrink = SKAction.resize(toWidth: CGFloat(beamPiece * Double((Student.studentHealth))), duration: 0.5)
+            let beamShrink = SKAction.resize(toWidth: CGFloat(beamPiece * Double((Student.studentHealth)-1)), duration: 0.5)
             
             self.playerBeam.run(beamShrink)
             
@@ -136,7 +136,7 @@ class GameScene: SKScene {
             print("Alien da hit = ", alien.alienHealth)
             
             let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
-            let beamShrink = SKAction.resize(toWidth: CGFloat(beamPiece * Double((Student.studentHealth))), duration: 0.5)
+            let beamShrink = SKAction.resize(toWidth: CGFloat(beamPiece * Double((Student.studentHealth)-1)), duration: 0.5)
             
             self.playerBeam.run(beamShrink)
             
