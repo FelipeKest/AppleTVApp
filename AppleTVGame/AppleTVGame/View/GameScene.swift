@@ -250,65 +250,94 @@ class GameScene: SKScene {
         leftCard.convertNumber(value: leftCard.numberValue)
         rightCard.convertNumber(value: rightCard.numberValue)
         
-        playerBaseParticle = playerBeam.beamBodyParticle
-        playerBaseParticle?.position = CGPoint(x: -290, y: -160)
-        playerBaseParticle?.zPosition = 6
-        self.addChild(playerBaseParticle!)
-        
-        alienBaseParticle = alienBeam.beamBodyParticle
-        alienBaseParticle?.position = CGPoint(x: 290, y: -160)
-        alienBaseParticle?.zPosition = 6
-        self.addChild(alienBaseParticle!)
-        
-        leftCardBG = SKSpriteNode(texture: SKTexture(image: leftCard.cardBG))
-        leftCardBG?.zPosition = 15
-        leftCardBG?.position = CGPoint(x: -150, y: 100)
-        leftCardBG?.size = CGSize(width: 220, height: 180)
-        self.addChild(leftCardBG!)
-        
-        rightCardBG = SKSpriteNode(texture: SKTexture(image: rightCard.cardBG))
-        rightCardBG?.zPosition = 15
-        rightCardBG?.position = CGPoint(x: 150, y: 100)
-        rightCardBG?.size = CGSize(width: 220, height: 180)
-        self.addChild(rightCardBG!)
-        
-        leftCardText = SKLabelNode(text: leftCard.numberDisplay)
-        leftCardText?.zPosition = 20
-        //leftCardText?.fontName = "HanziPen"
-        leftCardText?.fontColor = UIColor.black
-        leftCardText?.position = (leftCardBG?.position)!
-        
-        self.addChild(leftCardText!)
-        
-        rightCardText = SKLabelNode(text: rightCard.numberDisplay)
-        rightCardText?.zPosition = 20
-        //rightCardText?.fontName = "HanziPen"
-        rightCardText?.fontColor = UIColor.black
-        rightCardText?.position = (rightCardBG?.position)!
-        self.addChild(rightCardText!)
-        
-        cardsNeeded = false
-            
         alien.zPosition = 3
-        alien.position = CGPoint(x: 300, y: -180)
+        alien.position = CGPoint(x: 700, y: -180)
         alien.texture = SKTexture(image: alien.alienImages[0])
         alien.size = CGSize(width: 200.0, height: 200.0)
         self.addChild(alien)
         
-        playerBeam.zPosition = 5
-        playerBeam.position = CGPoint(x: -290, y: -160)
-        playerBeam.anchorPoint = CGPoint(x: 0.0, y: 0.5)
+        let alienAnimation: SKAction
+        alienAnimation = SKAction.move(to: CGPoint(x: 300.0, y: alien.position.y), duration: 2)
+        alien.run(alienAnimation)
         
-        self.alienBeam.zPosition = 5
-        self.alienBeam.position = CGPoint(x: 0, y: -160)
-        self.alienBeam.size = CGSize(width: distanceBetween, height: 80.0)
         
-        self.addChild(alienBeam)
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
+
+            self.playerBaseParticle = self.playerBeam.beamBodyParticle
+            self.playerBaseParticle?.position = CGPoint(x: -290, y: -160)
+            self.playerBaseParticle?.zPosition = 7
+            self.addChild(self.playerBaseParticle!)
         
-        let beamPiece = distanceBetween / Double(Student.studentHealth + alien.alienHealth)
-        playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
+            self.alienBaseParticle = self.alienBeam.beamBodyParticle
+            self.alienBaseParticle?.position = CGPoint(x: 290, y: -160)
+            self.alienBaseParticle?.zPosition = 7
+            self.addChild(self.alienBaseParticle!)
+            
+            let beamAppearing: SKAction
+            
+            self.playerBeam.zPosition = 6
+            self.playerBeam.position = CGPoint(x: -290, y: -160)
+            self.playerBeam.anchorPoint = CGPoint(x: 0.0, y: 0.5)
+            self.playerBeam.alpha = 0
+            
+            self.alienBeam.zPosition = 5
+            self.alienBeam.position = CGPoint(x: 0, y: -160)
+            self.alienBeam.size = CGSize(width: self.distanceBetween, height: 80.0)
+            self.alienBeam.alpha = 0
+            
+            self.addChild(self.alienBeam)
+            
+            let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
+            self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
+            
+            self.addChild(self.playerBeam)
+            
+            beamAppearing = SKAction.fadeAlpha(to: 1, duration: 1)
+            self.playerBeam.run(beamAppearing)
+            self.alienBeam.run(beamAppearing)
+            
+        })
         
-        self.addChild(playerBeam)
+        Timer.scheduledTimer(withTimeInterval: 2.5, repeats: false, block: { (timer) in
+            
+            let zoomIn: SKAction
+            zoomIn = SKAction.scale(by: 10, duration: 0.5)
+            
+            self.leftCardBG = SKSpriteNode(texture: SKTexture(image: self.leftCard.cardBG))
+            self.leftCardBG?.zPosition = 15
+            self.leftCardBG?.position = CGPoint(x: -150, y: 100)
+            self.leftCardBG?.size = CGSize(width: 22, height: 18)
+            self.addChild(self.leftCardBG!)
+            self.leftCardBG?.run(zoomIn)
+            
+            self.rightCardBG = SKSpriteNode(texture: SKTexture(image: self.rightCard.cardBG))
+            self.rightCardBG?.zPosition = 15
+            self.rightCardBG?.position = CGPoint(x: 150, y: 100)
+            self.rightCardBG?.size = CGSize(width: 22, height: 18)
+            self.addChild(self.rightCardBG!)
+            self.rightCardBG?.run(zoomIn)
+            
+        })
+        
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: { (timer) in
+            
+            self.leftCardText = SKLabelNode(text: self.leftCard.numberDisplay)
+            self.leftCardText?.zPosition = 20
+            //leftCardText?.fontName = "HanziPen"
+            self.leftCardText?.fontColor = UIColor.black
+            self.leftCardText?.position = (self.leftCardBG?.position)!
+            self.addChild(self.leftCardText!)
+            
+            self.rightCardText = SKLabelNode(text: self.rightCard.numberDisplay)
+            self.rightCardText?.zPosition = 20
+            //rightCardText?.fontName = "HanziPen"
+            self.rightCardText?.fontColor = UIColor.black
+            self.rightCardText?.position = (self.rightCardBG?.position)!
+            self.addChild(self.rightCardText!)
+            
+        })
+        
+        cardsNeeded = false
         
         //isInBattle = false
         
