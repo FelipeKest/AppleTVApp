@@ -9,9 +9,13 @@
 import SpriteKit
 import GameplayKit
 
+protocol GameDelegate {
+    func returnToMenu(from scene: SKScene)
+}
+
 class GameScene: SKScene {
     
-    private var label : SKLabelNode?
+    // MARK: Variables and Constants
     var scroller: InfiniteScrollingBackground?
     static var isInBattle: Bool! = false
     var hasTouched: Bool! = false
@@ -31,6 +35,8 @@ class GameScene: SKScene {
     public var leftCardText: SKLabelNode?
     public var rightCardText: SKLabelNode?
     
+    var gameDelegate: GameDelegate!
+    
     init(battleState: Bool) {
         super.init()
         GameScene.isInBattle = battleState
@@ -41,14 +47,14 @@ class GameScene: SKScene {
         super.init(coder: aDecoder)
     }
     
+    //MARK: Swipe Functions
+    
     @objc func swipeLeft(){
-        print("Left: \(leftCard.numberValue)")
         if leftCard.numberValue > rightCard.numberValue {
             // ganha o ponto e da hit no alien
             print("Estudante antes de levar",Student.studentHealth)
             print("Alien antes de levar ",alien.alienHealth)
-            //Attack.increase(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
-            //leftCard.changeBG(correct: true)
+    
             leftCardBG?.texture = SKTexture(imageNamed: "card_correto")
             print("Estudante da hit = ",Student.studentHealth)
             print("Alien leva hit = ",alien.alienHealth)
@@ -63,8 +69,6 @@ class GameScene: SKScene {
                 let beamPieceStep = CGPoint(x: beamPiece, y: 0)
                 self.alienBeam.position = CGPoint(x: self.alienBeam.position.x + beamPieceStep.x/2, y: self.alienBeam.position.y)
             })
-            
-
         }
         else {
             print(Student.studentHealth)
@@ -77,21 +81,19 @@ class GameScene: SKScene {
             
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
                 self.changeCardValue()
-                
+
                 Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
                 let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
                 self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
                 self.alienBeam.size = CGSize(width: beamPiece * Double(self.alien.alienHealth), height: 80.0)
                 let beamPieceStep = CGPoint(x: beamPiece, y: 0)
                 self.alienBeam.position = CGPoint(x: self.alienBeam.position.x - beamPieceStep.x/2, y: self.alienBeam.position.y)
+                
             })
-
         }
     }
     
     @objc func swipeRight(){
-        print("Left: \(leftCard.numberValue)")
-        print("Right:")
         if rightCard.numberValue > leftCard.numberValue {
             // ganha e da hit no alien
             print("Estudante antes de dar =", Student.studentHealth)
@@ -111,7 +113,6 @@ class GameScene: SKScene {
                 let beamPieceStep = CGPoint(x: beamPiece, y: 0)
                 self.alienBeam.position = CGPoint(x: self.alienBeam.position.x + beamPieceStep.x/2, y: self.alienBeam.position.y)
             })
-            
         }
         else {
             print(Student.studentHealth)
@@ -135,8 +136,10 @@ class GameScene: SKScene {
         }
     }
     
+    
+    //MARK: Overrides
     override func didMove(to view: SKView) {
-        
+        self.view?.isPaused = false
         //define quais imagens são utilizadas no background
         let backgroundimages = [UIImage(named: "bg1")!, UIImage(named: "bg2")!]
         
@@ -190,10 +193,7 @@ class GameScene: SKScene {
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let label = self.label {
-            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-        }
-        
+
         for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
     
@@ -213,7 +213,7 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         
-        
+    
         if alien.alienHealth == 0 {
             // passa de fase
             alienBeam.removeFromParent()
@@ -237,19 +237,28 @@ class GameScene: SKScene {
          
         }
         if Student.studentHealth == 0 {
-            // game over
             GameScene.isInBattle = false
             GameScene.gameOver = true
+    
+        }
+        
+        if GameScene.gameOver == true {
+            self.view?.isPaused = true
+            gameDelegate.returnToMenu(from: self)
+            scene?.view?.window?.rootViewController?.dismiss(animated: false, completion: nil)
+            GameScene.gameOver = false
+            Student.studentHealth = 3
+            
         }
     }
     
     
-    
+    //MARK: Battle Setup and CardChanges
     func setUpBattle () {
         self.scroller?.stopScroll()
         
-        print("LeftValue: \(leftCard.numberValue)")
-        print("RightValue: \(rightCard.numberValue)")
+        print("LeftValue: \(String(describing:leftCard.numberValue))")
+        print("RightValue: \(String(describing: rightCard.numberValue))")
         
         leftCard.convertNumber(value: leftCard.numberValue)
         rightCard.convertNumber(value: rightCard.numberValue)
@@ -312,10 +321,6 @@ class GameScene: SKScene {
         alienBeam.size = CGSize(width: beamPiece * Double(alienBeam.numOfLives), height: 80.0)
         
         self.addChild(alienBeam)
-        //isInBattle = false
-        
-        //hasTouched = true
-        //}
     }
     
     
@@ -331,7 +336,7 @@ class GameScene: SKScene {
         
         leftCardText?.text = leftCard.numberDisplay
         rightCardText?.text = rightCard.numberDisplay
-        
-        
     }
+    
 }
+

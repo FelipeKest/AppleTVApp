@@ -12,7 +12,7 @@ import SpriteKit
 class Attack {
     
     //MARK: Propriedades
- 
+    
     //MARK: Initializer
     
     //MARK: Public Functions
@@ -24,8 +24,6 @@ class Attack {
     static func decrease(alunoLife: inout Double, alienLife: inout Double, ammount: Double) {
         alunoLife -= ammount
         alienLife += ammount
-        print(alienLife)
-        print(alunoLife)
     }
 
 }
