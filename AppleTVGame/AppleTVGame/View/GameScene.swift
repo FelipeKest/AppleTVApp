@@ -56,12 +56,18 @@ class GameScene: SKScene {
             print("Estudante da hit = ",Student.studentHealth)
             print("Alien leva hit = ",alien.alienHealth)
             
+            let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
+            let beamGrow = SKAction.resize(toWidth: CGFloat(beamPiece * Double((Student.studentHealth)+1)), duration: 0.5)
+            
+            self.playerBeam.run(beamGrow)
+            
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
                 self.changeCardValue()
                 
                 Attack.increase(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
-                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
-                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
+                
+//                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
+//                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
             })
             
 
@@ -75,12 +81,18 @@ class GameScene: SKScene {
             print("Estudante leva hit = ",Student.studentHealth)
             print("Alien da hit = ",alien.alienHealth)
             
+            let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
+            let beamShrink = SKAction.resize(toWidth: CGFloat(beamPiece * Double((Student.studentHealth))), duration: 0.5)
+            
+            self.playerBeam.run(beamShrink)
+            
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
                 self.changeCardValue()
                 
                 Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
-                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
-                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
+                
+//                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
+//                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
             })
 
         }
@@ -99,11 +111,18 @@ class GameScene: SKScene {
             print("Estudante da hit = ", Student.studentHealth)
             print("Alien leva hit = ", alien.alienHealth)
             
+            let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
+            let beamGrow = SKAction.resize(toWidth: CGFloat(beamPiece * Double((Student.studentHealth)+1)), duration: 0.5)
+            
+            self.playerBeam.run(beamGrow)
+            
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
                 self.changeCardValue()
+                
                 Attack.increase(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
-                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
-                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
+                
+//                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
+//                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
             })
             
         }
@@ -116,11 +135,18 @@ class GameScene: SKScene {
             print("Estudante leva hit = ", Student.studentHealth)
             print("Alien da hit = ", alien.alienHealth)
             
+            let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
+            let beamShrink = SKAction.resize(toWidth: CGFloat(beamPiece * Double((Student.studentHealth))), duration: 0.5)
+            
+            self.playerBeam.run(beamShrink)
+            
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
                 self.changeCardValue()
+                
                 Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
-                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
-                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
+                
+//                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
+//                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
             })
             
         }
