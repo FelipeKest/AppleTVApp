@@ -18,9 +18,9 @@ class GameScene: SKScene {
     var hasTouched: Bool! = false
     static public var gameOver: Bool! = false
     var player = Student.instance
-    var playerBeam = HitBeam(body: UIImage(named: "beam_player")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Player")!, livesOfOwner: 3)
+    var playerBeam = HitBeam(body: UIImage(named: "beam_player_blurred")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Player")!, livesOfOwner: 3)
     var alien = Alien(life: 2, imagensAlien: [UIImage(named: "Alien1")!])
-    var alienBeam = HitBeam(body: UIImage(named: "beam_alien")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Alien")!, livesOfOwner: 2)
+    var alienBeam = HitBeam(body: UIImage(named: "beam_alien_blurred")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Alien")!, livesOfOwner: 2)
     var swipeLeftInstance: UISwipeGestureRecognizer?
     var swipeRightInstance: UISwipeGestureRecognizer?
     var distanceBetween: Double = 580
@@ -31,6 +31,8 @@ class GameScene: SKScene {
     public var rightCardBG: SKSpriteNode?
     public var leftCardText: SKLabelNode?
     public var rightCardText: SKLabelNode?
+    var playerBaseParticle: SKEmitterNode?
+    var alienBaseParticle: SKEmitterNode?
     
     init(battleState: Bool) {
         super.init()
@@ -60,9 +62,6 @@ class GameScene: SKScene {
                 Attack.increase(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
                 let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
                 self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
-                self.alienBeam.size = CGSize(width: beamPiece * Double(self.alien.alienHealth), height: 80.0)
-                let beamPieceStep = CGPoint(x: beamPiece, y: 0)
-                self.alienBeam.position = CGPoint(x: self.alienBeam.position.x + beamPieceStep.x/2, y: self.alienBeam.position.y)
             })
             
 
@@ -82,9 +81,6 @@ class GameScene: SKScene {
                 Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
                 let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
                 self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
-                self.alienBeam.size = CGSize(width: beamPiece * Double(self.alien.alienHealth), height: 80.0)
-                let beamPieceStep = CGPoint(x: beamPiece, y: 0)
-                self.alienBeam.position = CGPoint(x: self.alienBeam.position.x - beamPieceStep.x/2, y: self.alienBeam.position.y)
             })
 
         }
@@ -108,9 +104,6 @@ class GameScene: SKScene {
                 Attack.increase(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
                 let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
                 self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
-                self.alienBeam.size = CGSize(width: beamPiece * Double(self.alien.alienHealth), height: 80.0)
-                let beamPieceStep = CGPoint(x: beamPiece, y: 0)
-                self.alienBeam.position = CGPoint(x: self.alienBeam.position.x + beamPieceStep.x/2, y: self.alienBeam.position.y)
             })
             
         }
@@ -128,9 +121,6 @@ class GameScene: SKScene {
                 Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
                 let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
                 self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
-                self.alienBeam.size = CGSize(width: beamPiece * Double(self.alien.alienHealth), height: 80.0)
-                let beamPieceStep = CGPoint(x: beamPiece, y: 0)
-                self.alienBeam.position = CGPoint(x: self.alienBeam.position.x - beamPieceStep.x/2, y: self.alienBeam.position.y)
             })
             
         }
@@ -168,7 +158,9 @@ class GameScene: SKScene {
             self.scroller?.stopScroll()
 
             if self.cardsNeeded == true{
+                
                 self.setUpBattle()
+                
                 self.firstBattleDone = true
             }
         })
@@ -225,6 +217,8 @@ class GameScene: SKScene {
             rightCardBG?.removeFromParent()
             leftCardText?.removeFromParent()
             rightCardText?.removeFromParent()
+            alienBaseParticle?.removeFromParent()
+            playerBaseParticle?.removeFromParent()
             GameScene.isInBattle = false
             
             //PLAYER muda de animacao
@@ -256,24 +250,29 @@ class GameScene: SKScene {
         leftCard.convertNumber(value: leftCard.numberValue)
         rightCard.convertNumber(value: rightCard.numberValue)
         
+        playerBaseParticle = playerBeam.beamBodyParticle
+        playerBaseParticle?.position = CGPoint(x: -290, y: -160)
+        playerBaseParticle?.zPosition = 6
+        self.addChild(playerBaseParticle!)
+        
+        alienBaseParticle = alienBeam.beamBodyParticle
+        alienBaseParticle?.position = CGPoint(x: 290, y: -160)
+        alienBaseParticle?.zPosition = 6
+        self.addChild(alienBaseParticle!)
         
         leftCardBG = SKSpriteNode(texture: SKTexture(image: leftCard.cardBG))
         leftCardBG?.zPosition = 15
         leftCardBG?.position = CGPoint(x: -150, y: 100)
         leftCardBG?.size = CGSize(width: 220, height: 180)
-        
         self.addChild(leftCardBG!)
         
         rightCardBG = SKSpriteNode(texture: SKTexture(image: rightCard.cardBG))
-
         rightCardBG?.zPosition = 15
         rightCardBG?.position = CGPoint(x: 150, y: 100)
         rightCardBG?.size = CGSize(width: 220, height: 180)
-        
         self.addChild(rightCardBG!)
         
         leftCardText = SKLabelNode(text: leftCard.numberDisplay)
-        
         leftCardText?.zPosition = 20
         //leftCardText?.fontName = "HanziPen"
         leftCardText?.fontColor = UIColor.black
@@ -282,13 +281,12 @@ class GameScene: SKScene {
         self.addChild(leftCardText!)
         
         rightCardText = SKLabelNode(text: rightCard.numberDisplay)
-        
         rightCardText?.zPosition = 20
         //rightCardText?.fontName = "HanziPen"
         rightCardText?.fontColor = UIColor.black
         rightCardText?.position = (rightCardBG?.position)!
-        
         self.addChild(rightCardText!)
+        
         cardsNeeded = false
             
         alien.zPosition = 3
@@ -297,27 +295,21 @@ class GameScene: SKScene {
         alien.size = CGSize(width: 200.0, height: 200.0)
         self.addChild(alien)
         
-        let beamPiece = distanceBetween / Double(Student.studentHealth + alien.alienHealth)
-        let beamPieceStep = CGPoint(x: beamPiece, y: 0)
-        
         playerBeam.zPosition = 5
         playerBeam.position = CGPoint(x: -290, y: -160)
         playerBeam.anchorPoint = CGPoint(x: 0.0, y: 0.5)
         
+        self.alienBeam.zPosition = 5
+        self.alienBeam.position = CGPoint(x: 0, y: -160)
+        self.alienBeam.size = CGSize(width: distanceBetween, height: 80.0)
+        
+        self.addChild(alienBeam)
+        
+        let beamPiece = distanceBetween / Double(Student.studentHealth + alien.alienHealth)
         playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
         
         self.addChild(playerBeam)
         
-        
-        alienBeam.zPosition = 5
-        alienBeam.position = CGPoint(x: 180, y: -160)
-        
-        alienBeam.size = CGSize(width: beamPiece * Double(alien.alienHealth), height: 80.0)
-        if firstBattleDone == true {
-        alienBeam.position = CGPoint(x: self.alienBeam.position.x - beamPieceStep.x/2, y: self.alienBeam.position.y)
-        }
-        
-        self.addChild(alienBeam)
         //isInBattle = false
         
         //hasTouched = true
