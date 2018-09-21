@@ -21,7 +21,7 @@ class GameViewController: UIViewController, GameDelegate{
     
     func presentGameOverView(from scene: SKScene) {
         DispatchQueue.main.async {
-            let gameOverView = GameOverView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), vc: self)
+            let gameOverView = GameOverView(frame: UIScreen.main.bounds, vc: self)
             self.view.addSubview(gameOverView)
             
             scene.removeAllChildren()

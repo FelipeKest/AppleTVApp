@@ -84,8 +84,8 @@ class GameOverView: UIView {
         
         print("coloquei o bobao do butao")
         // Coloco ele na tela e falo a acao dele
-        returnBtn.addTarget(self, action: #selector(returnToMenu(sender:)), for: .touchDown)
-        restartBtn.addTarget(self, action: #selector(restartGame(sender:)), for: .touchDown)
+        returnBtn.addTarget(self, action: #selector(returnToMenu(sender:)), for: .primaryActionTriggered)
+        restartBtn.addTarget(self, action: #selector(restartGame(sender:)), for: .primaryActionTriggered)
         
         //Add na view
         self.addSubview(returnBtn)
