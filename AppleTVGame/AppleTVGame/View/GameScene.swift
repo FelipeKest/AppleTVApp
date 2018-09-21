@@ -19,9 +19,7 @@ class GameScene: SKScene {
     static public var gameOver: Bool! = false
     var player = Student.instance
     var playerBeam = HitBeam(body: UIImage(named: "beam_player_blurred")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Player")!, livesOfOwner: 3)
-    var alien = Alien(life: 2, imagensAlien: [UIImage(named: "alien1")!])
-    var alien2 = Alien(life: 3, imagensAlien: [UIImage(named: "alien2")!])
-    var alien3 = Alien(life: 5, imagensAlien: [UIImage(named: "alien3")!])
+    var alien = Alien(life: 2, imagensAlien: [UIImage(named: "alien1")!, UIImage(named: "alien2")!, UIImage(named: "alien3")!, UIImage(named: "alien4")!])
     var alienBeam = HitBeam(body: UIImage(named: "beam_alien_blurred")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Alien")!, livesOfOwner: 2)
     var swipeLeftInstance: UISwipeGestureRecognizer?
     var swipeRightInstance: UISwipeGestureRecognizer?
@@ -241,7 +239,7 @@ class GameScene: SKScene {
         if alien.alienHealth == 0 {
             // passa de fase
             alienBeam.removeFromParent()
-            alien.removeFromParent()
+            //alien.removeFromParent()
             playerBeam.removeFromParent()
             leftCardBG?.removeFromParent()
             rightCardBG?.removeFromParent()
@@ -249,6 +247,12 @@ class GameScene: SKScene {
             rightCardText?.removeFromParent()
             alienBaseParticle?.removeFromParent()
             playerBaseParticle?.removeFromParent()
+            
+            let spin = SKAction.rotate(byAngle: 1080, duration: 2)
+            let exitScene = SKAction.moveTo(x: 1200, duration: 2)
+            alien.run(spin)
+            alien.run(exitScene)
+            
             GameScene.isInBattle = false
             
             //PLAYER muda de animacao
@@ -258,6 +262,11 @@ class GameScene: SKScene {
             scroller?.resumeScroll()
             
             playerRun()
+            
+            Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
+                self.alien.removeAllActions()
+                self.alien.removeFromParent()
+            })
             
             Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false, block: { (timer) in
                 self.setUpBattle()
@@ -287,17 +296,18 @@ class GameScene: SKScene {
         rightCard.convertNumber(value: rightCard.numberValue)
         
         alien.zPosition = 3
+        alien.zRotation = 0
         alien.position = CGPoint(x: 700, y: -180)
-        alien.texture = SKTexture(image: alien.alienImages[0])
+        alien.texture = SKTexture(image: alien.alienImages[Int.random(min: 0, max: alien.alienImages.count-1)])
         alien.size = CGSize(width: 200.0, height: 200.0)
         self.addChild(alien)
         
         let alienAnimation: SKAction
-        alienAnimation = SKAction.move(to: CGPoint(x: 300.0, y: alien.position.y), duration: 2)
+        alienAnimation = SKAction.move(to: CGPoint(x: 300.0, y: alien.position.y), duration: 1)
         alien.run(alienAnimation)
         
         
-        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { (timer) in
             
             self.player.texture = SKTexture(image: Student.studentImages[3])
 
@@ -336,7 +346,7 @@ class GameScene: SKScene {
             
         })
         
-        Timer.scheduledTimer(withTimeInterval: 2.5, repeats: false, block: { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { (timer) in
             
             let zoomIn: SKAction
             zoomIn = SKAction.scale(by: 10, duration: 0.5)
@@ -355,9 +365,10 @@ class GameScene: SKScene {
             self.addChild(self.rightCardBG!)
             self.rightCardBG?.run(zoomIn)
             
+            
         })
         
-        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
             
             self.leftCardText = SKLabelNode(text: self.leftCard.numberDisplay)
             self.leftCardText?.zPosition = 20

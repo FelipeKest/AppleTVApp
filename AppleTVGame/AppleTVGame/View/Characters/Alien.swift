@@ -12,11 +12,11 @@ import AVFoundation
 
 class Alien: SKSpriteNode {
     var alienHealth: Double
-    var alienImages: [UIImage]
+    var alienImages: [UIImage] = [UIImage(named: "alien1")!, UIImage(named: "alien2")!, UIImage(named: "alien3")!]
     var alienSound: AVAudioPlayer?
     
     init(life: Double, imagensAlien: [UIImage]) {
-        let texture = SKTexture(imageNamed: "alien1")
+        let texture = SKTexture(image: alienImages[0])
         self.alienHealth = life
         self.alienImages = imagensAlien
         super.init(texture: texture, color: .clear, size: texture.size())
