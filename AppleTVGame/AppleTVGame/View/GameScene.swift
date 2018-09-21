@@ -11,6 +11,7 @@ import GameplayKit
 
 protocol GameDelegate {
     func returnToMenu(from scene: SKScene)
+    func presentGameOverView(from scene: SKScene)
 }
 
 class GameScene: SKScene {
@@ -52,39 +53,39 @@ class GameScene: SKScene {
     @objc func swipeLeft(){
         if leftCard.numberValue > rightCard.numberValue {
             // ganha o ponto e da hit no alien
-            print("Estudante antes de levar",Student.studentHealth)
+            print("Estudante antes de levar",self.player.studentHealth)
             print("Alien antes de levar ",alien.alienHealth)
     
             leftCardBG?.texture = SKTexture(imageNamed: "card_correto")
-            print("Estudante da hit = ",Student.studentHealth)
+            print("Estudante da hit = ",self.player.studentHealth)
             print("Alien leva hit = ",alien.alienHealth)
             
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
                 self.changeCardValue()
                 
-                Attack.increase(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
-                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
-                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
+                Attack.increase(alunoLife: &self.player.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
+                let beamPiece = self.distanceBetween / Double(self.player.studentHealth + self.alien.alienHealth)
+                self.playerBeam.size = CGSize(width: beamPiece * Double(self.player.studentHealth), height: 80.0)
                 self.alienBeam.size = CGSize(width: beamPiece * Double(self.alien.alienHealth), height: 80.0)
                 let beamPieceStep = CGPoint(x: beamPiece, y: 0)
                 self.alienBeam.position = CGPoint(x: self.alienBeam.position.x + beamPieceStep.x/2, y: self.alienBeam.position.y)
             })
         }
         else {
-            print(Student.studentHealth)
+            print(self.player.studentHealth)
             print(alien.alienHealth)
-            //Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
+            //Attack.decrease(alunoLife: &self.player.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
             //leftCard.changeBG(correct: false)
             leftCardBG?.texture = SKTexture(imageNamed: "card_errado")
-            print("Estudante leva hit = ",Student.studentHealth)
+            print("Estudante leva hit = ",self.player.studentHealth)
             print("Alien da hit = ",alien.alienHealth)
             
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
                 self.changeCardValue()
 
-                Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
-                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
-                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
+                Attack.decrease(alunoLife: &self.player.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
+                let beamPiece = self.distanceBetween / Double(self.player.studentHealth + self.alien.alienHealth)
+                self.playerBeam.size = CGSize(width: beamPiece * Double(self.player.studentHealth), height: 80.0)
                 self.alienBeam.size = CGSize(width: beamPiece * Double(self.alien.alienHealth), height: 80.0)
                 let beamPieceStep = CGPoint(x: beamPiece, y: 0)
                 self.alienBeam.position = CGPoint(x: self.alienBeam.position.x - beamPieceStep.x/2, y: self.alienBeam.position.y)
@@ -96,38 +97,38 @@ class GameScene: SKScene {
     @objc func swipeRight(){
         if rightCard.numberValue > leftCard.numberValue {
             // ganha e da hit no alien
-            print("Estudante antes de dar =", Student.studentHealth)
+            print("Estudante antes de dar =", self.player.studentHealth)
             print("Alien antes de levar =", alien.alienHealth)
-            //Attack.increase(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
+            //Attack.increase(alunoLife: &self.player.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
             //rightCard.changeBG(correct: true)
             rightCardBG?.texture = SKTexture(imageNamed: "card_correto")
-            print("Estudante da hit = ", Student.studentHealth)
+            print("Estudante da hit = ", self.player.studentHealth)
             print("Alien leva hit = ", alien.alienHealth)
             
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
                 self.changeCardValue()
-                Attack.increase(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
-                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
-                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
+                Attack.increase(alunoLife: &self.player.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
+                let beamPiece = self.distanceBetween / Double(self.player.studentHealth + self.alien.alienHealth)
+                self.playerBeam.size = CGSize(width: beamPiece * Double(self.player.studentHealth), height: 80.0)
                 self.alienBeam.size = CGSize(width: beamPiece * Double(self.alien.alienHealth), height: 80.0)
                 let beamPieceStep = CGPoint(x: beamPiece, y: 0)
                 self.alienBeam.position = CGPoint(x: self.alienBeam.position.x + beamPieceStep.x/2, y: self.alienBeam.position.y)
             })
         }
         else {
-            print(Student.studentHealth)
+            print(self.player.studentHealth)
             print(alien.alienHealth)
-            //Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
+            //Attack.decrease(alunoLife: &self.player.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
             //rightCard.changeBG(correct: false)
             rightCardBG?.texture = SKTexture(imageNamed: "card_errado")
-            print("Estudante leva hit = ", Student.studentHealth)
+            print("Estudante leva hit = ", self.player.studentHealth)
             print("Alien da hit = ", alien.alienHealth)
             
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
                 self.changeCardValue()
-                Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
-                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
-                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
+                Attack.decrease(alunoLife: &self.player.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
+                let beamPiece = self.distanceBetween / Double(self.player.studentHealth + self.alien.alienHealth)
+                self.playerBeam.size = CGSize(width: beamPiece * Double(self.player.studentHealth), height: 80.0)
                 self.alienBeam.size = CGSize(width: beamPiece * Double(self.alien.alienHealth), height: 80.0)
                 let beamPieceStep = CGPoint(x: beamPiece, y: 0)
                 self.alienBeam.position = CGPoint(x: self.alienBeam.position.x - beamPieceStep.x/2, y: self.alienBeam.position.y)
@@ -160,13 +161,13 @@ class GameScene: SKScene {
         // (Optional) Changing the instance's zPosition:
         scroller?.zPosition = 1
         
-        player.zPosition = 3
-        player.position = CGPoint(x: -360, y: -150)
-        player.texture = SKTexture(image: player.studentImages[0])
-        player.size = CGSize(width: 175.0, height: 250.0)
-        self.addChild(player)
+        self.player.zPosition = 3
+        self.player.position = CGPoint(x: -360, y: -150)
+        self.player.texture = SKTexture(image: self.player.studentImages[0])
+        self.player.size = CGSize(width: 175.0, height: 250.0)
+        self.addChild(self.player)
         
-        Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false, block: { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { (timer) in
             self.scroller?.stopScroll()
 
             if self.cardsNeeded == true{
@@ -225,10 +226,10 @@ class GameScene: SKScene {
             rightCardText?.removeFromParent()
             GameScene.isInBattle = false
             
-            //PLAYER muda de animacao
+            //self.player muda de animacao
             
-            alien.alienHealth = Student.studentHealth - 2
-            Student.studentHealth = 3
+            alien.alienHealth = self.player.studentHealth - 2
+            self.player.studentHealth = 3
             scroller?.resumeScroll()
             
             Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false, block: { (timer) in
@@ -236,18 +237,17 @@ class GameScene: SKScene {
             })
          
         }
-        if Student.studentHealth == 0 {
+        if self.player.studentHealth == 0 {
             GameScene.isInBattle = false
             GameScene.gameOver = true
     
         }
         
         if GameScene.gameOver == true {
+            //Chamar uma view
             self.view?.isPaused = true
-            gameDelegate.returnToMenu(from: self)
-            scene?.view?.window?.rootViewController?.dismiss(animated: false, completion: nil)
-            GameScene.gameOver = false
-            Student.studentHealth = 3
+            gameDelegate.presentGameOverView(from: self)
+            self.player.studentHealth = 3
             
         }
     }

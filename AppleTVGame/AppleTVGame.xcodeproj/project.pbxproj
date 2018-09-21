@@ -25,6 +25,8 @@
 		913183BF2130896A009A6CF0 /* AppleTVGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913183BE2130896A009A6CF0 /* AppleTVGameTests.swift */; };
 		913183CA2130896A009A6CF0 /* AppleTVGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913183C92130896A009A6CF0 /* AppleTVGameUITests.swift */; };
 		91ADC72721408A9000946C92 /* InfiniteScrollingBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ADC72621408A8F00946C92 /* InfiniteScrollingBackground.swift */; };
+		91E24AAA2153FE48009A9038 /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E24AA92153FE48009A9038 /* GameOverView.swift */; };
+		91E24AAC21545ED5009A9038 /* FocusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E24AAB21545ED5009A9038 /* FocusableButton.swift */; };
 		91F757FC2149B07B0065C045 /* BeamBaseParticle_Player.sks in Resources */ = {isa = PBXBuildFile; fileRef = 91F757FA2149B07B0065C045 /* BeamBaseParticle_Player.sks */; };
 		91F757FD2149B07B0065C045 /* BeamBaseParticle_Alien.sks in Resources */ = {isa = PBXBuildFile; fileRef = 91F757FB2149B07B0065C045 /* BeamBaseParticle_Alien.sks */; };
 /* End PBXBuildFile section */
@@ -71,6 +73,8 @@
 		913183C92130896A009A6CF0 /* AppleTVGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleTVGameUITests.swift; sourceTree = "<group>"; };
 		913183CB2130896A009A6CF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91ADC72621408A8F00946C92 /* InfiniteScrollingBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollingBackground.swift; sourceTree = "<group>"; };
+		91E24AA92153FE48009A9038 /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameOverView.swift; path = AppleTVGame/View/GameOverView.swift; sourceTree = SOURCE_ROOT; };
+		91E24AAB21545ED5009A9038 /* FocusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusableButton.swift; sourceTree = "<group>"; };
 		91F757FA2149B07B0065C045 /* BeamBaseParticle_Player.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BeamBaseParticle_Player.sks; sourceTree = "<group>"; };
 		91F757FB2149B07B0065C045 /* BeamBaseParticle_Alien.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BeamBaseParticle_Alien.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,7 +172,9 @@
 				6742F82F215015C300CF0216 /* TitleScene.sks */,
 				6742F833215016D600CF0216 /* TitleScreen.swift */,
 				913183B021308968009A6CF0 /* Main.storyboard */,
+				91E24AA92153FE48009A9038 /* GameOverView.swift */,
 				913183AC21308968009A6CF0 /* GameScene.swift */,
+				91E24AAB21545ED5009A9038 /* FocusableButton.swift */,
 				6742F82D214AF2FE00CF0216 /* Extensions.swift */,
 			);
 			path = View;
@@ -349,6 +355,8 @@
 				9118ACEA214876DD000693DD /* Student.swift in Sources */,
 				913183A721308967009A6CF0 /* AppDelegate.swift in Sources */,
 				9118ACE8214876DD000693DD /* Alien.swift in Sources */,
+				91E24AAC21545ED5009A9038 /* FocusableButton.swift in Sources */,
+				91E24AAA2153FE48009A9038 /* GameOverView.swift in Sources */,
 				9118ACE9214876DD000693DD /* Attack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
