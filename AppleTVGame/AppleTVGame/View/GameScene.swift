@@ -19,7 +19,9 @@ class GameScene: SKScene {
     static public var gameOver: Bool! = false
     var player = Student.instance
     var playerBeam = HitBeam(body: UIImage(named: "beam_player_blurred")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Player")!, livesOfOwner: 3)
-    var alien = Alien(life: 2, imagensAlien: [UIImage(named: "Alien1")!])
+    var alien = Alien(life: 2, imagensAlien: [UIImage(named: "alien1")!])
+    var alien2 = Alien(life: 3, imagensAlien: [UIImage(named: "alien2")!])
+    var alien3 = Alien(life: 5, imagensAlien: [UIImage(named: "alien3")!])
     var alienBeam = HitBeam(body: UIImage(named: "beam_alien_blurred")!, bodyParticle: SKEmitterNode(fileNamed: "BeamBaseParticle_Alien")!, livesOfOwner: 2)
     var swipeLeftInstance: UISwipeGestureRecognizer?
     var swipeRightInstance: UISwipeGestureRecognizer?
@@ -166,7 +168,7 @@ class GameScene: SKScene {
         self.view?.addGestureRecognizer(swipeRightInstance!)
         
         // Initializing InfiniteScrollingBackground's Instance:
-        scroller = InfiniteScrollingBackground(images: backgroundimages, scene: self, scrollDirection: .left, speed: 10)
+        scroller = InfiniteScrollingBackground(images: backgroundimages, scene: self, scrollDirection: .left, speed: 5)
         
         // Using it:
         scroller?.scroll()
@@ -176,9 +178,11 @@ class GameScene: SKScene {
         
         player.zPosition = 3
         player.position = CGPoint(x: -360, y: -150)
-        player.texture = SKTexture(image: player.studentImages[0])
+        player.texture = SKTexture(image: Student.studentImages[0])
         player.size = CGSize(width: 175.0, height: 250.0)
         self.addChild(player)
+        
+        playerRun()
         
         Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false, block: { (timer) in
             self.scroller?.stopScroll()
@@ -253,6 +257,8 @@ class GameScene: SKScene {
             Student.studentHealth = 3
             scroller?.resumeScroll()
             
+            playerRun()
+            
             Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false, block: { (timer) in
                 self.setUpBattle()
             })
@@ -269,6 +275,10 @@ class GameScene: SKScene {
     
     func setUpBattle () {
         self.scroller?.stopScroll()
+        
+        self.player.removeAllActions()
+        
+        player.texture = SKTexture(image: Student.studentImages[2])
         
         print("LeftValue: \(leftCard.numberValue)")
         print("RightValue: \(rightCard.numberValue)")
@@ -288,6 +298,8 @@ class GameScene: SKScene {
         
         
         Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
+            
+            self.player.texture = SKTexture(image: Student.studentImages[3])
 
             self.playerBaseParticle = self.playerBeam.beamBodyParticle
             self.playerBaseParticle?.position = CGPoint(x: -290, y: -160)
@@ -386,5 +398,12 @@ class GameScene: SKScene {
         rightCardText?.text = rightCard.numberDisplay
         
         
+    }
+    
+    func playerRun () {
+        let runningFrames: [SKTexture] = [SKTexture(image: Student.studentImages[0]), SKTexture(image: Student.studentImages[1])]
+        let runningAction = SKAction.animate(with: runningFrames, timePerFrame: 0.2)
+        let runningForever = SKAction.repeatForever(runningAction)
+        self.player.run(runningForever)
     }
 }

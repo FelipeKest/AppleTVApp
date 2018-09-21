@@ -13,11 +13,11 @@ class Student:SKSpriteNode {
     static let instance = Student()
     
     static var studentHealth: Double = 3
-    var studentImages: [UIImage]  = [UIImage(named: "player_attacking")!]
+    static var studentImages: [UIImage]  = [UIImage(named: "player_running_1")!, UIImage(named: "player_running_2")!, UIImage(named: "player_standing")!, UIImage(named: "player_attacking")!]
     
     
     private init() {
-        let texture = SKTexture(imageNamed: "player_attacking")
+        let texture = SKTexture(imageNamed: "player_standing")
         super.init(texture: texture, color: .clear, size: texture.size())
     }
     

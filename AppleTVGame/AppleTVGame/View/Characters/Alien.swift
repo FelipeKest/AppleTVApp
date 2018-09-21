@@ -16,7 +16,7 @@ class Alien: SKSpriteNode {
     var alienSound: AVAudioPlayer?
     
     init(life: Double, imagensAlien: [UIImage]) {
-        let texture = SKTexture(imageNamed: "Alien1")
+        let texture = SKTexture(imageNamed: "alien1")
         self.alienHealth = life
         self.alienImages = imagensAlien
         super.init(texture: texture, color: .clear, size: texture.size())
