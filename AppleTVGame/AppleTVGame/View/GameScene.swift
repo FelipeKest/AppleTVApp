@@ -154,6 +154,16 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        for family in UIFont.familyNames {
+            
+            let sName: String = family as String
+            print("family: \(sName)")
+            
+            for name in UIFont.fontNames(forFamilyName: sName) {
+                print("name: \(name as String)")
+            }
+        }
+        
         //define quais imagens são utilizadas no background
         let backgroundimages = [UIImage(named: "bg1")!, UIImage(named: "bg2")!]
         
@@ -372,16 +382,17 @@ class GameScene: SKScene {
             
             self.leftCardText = SKLabelNode(text: self.leftCard.numberDisplay)
             self.leftCardText?.zPosition = 20
-            //leftCardText?.fontName = "HanziPen"
-            self.leftCardText?.fontColor = UIColor.black
-            self.leftCardText?.position = (self.leftCardBG?.position)!
+            self.leftCardText?.fontSize = 50
+            self.leftCardText?.fontName = "HanziPenSC-W5"
+            self.leftCardText?.fontColor = #colorLiteral(red: 0.262745098, green: 0.262745098, blue: 0.262745098, alpha: 1)
+            self.leftCardText?.position = CGPoint(x: (self.leftCardBG?.position.x)!, y: (self.leftCardBG?.position.y)! - 10)
             self.addChild(self.leftCardText!)
-            
             self.rightCardText = SKLabelNode(text: self.rightCard.numberDisplay)
             self.rightCardText?.zPosition = 20
-            //rightCardText?.fontName = "HanziPen"
-            self.rightCardText?.fontColor = UIColor.black
-            self.rightCardText?.position = (self.rightCardBG?.position)!
+            self.rightCardText?.fontSize = 50
+            self.rightCardText?.fontName = "HanziPenSC-W5"
+            self.rightCardText?.fontColor = #colorLiteral(red: 0.262745098, green: 0.262745098, blue: 0.262745098, alpha: 1)
+            self.rightCardText?.position = CGPoint(x: (self.rightCardBG?.position.x)!, y: (self.rightCardBG?.position.y)! - 10)
             self.addChild(self.rightCardText!)
             
         })
