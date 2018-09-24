@@ -110,20 +110,3 @@ func rationalApproximation(of x0 : Double, withPrecision eps : Double = 1.0E-2) 
     }
     return (h, k)
 }
-/*func findMinMultiplier (denominator: Int, numerator: Int, divider: Int) -> (Int, Int){
-    if divider > denominator || divider > numerator {
-        print ("divider > denominator -> \(denominator)")
-        return (denominator, divider)
-    }
-    
-    else if denominator % divider != 0 && numerator % divider != 0 {
-        let newDivider = divider + 1
-        print ("denominator % divider != 0  -> \(denominator)")
-        return findMinMultiplier(denominator: denominator, numerator: numerator, divider: newDivider)
-    }
-    else{
-        print ("denominator % divider = 0 -> \(denominator)")
-        return findMinMultiplier(denominator: denominator/divider, numerator:
-            numerator/divider, divider: divider)
-    }
-}*/

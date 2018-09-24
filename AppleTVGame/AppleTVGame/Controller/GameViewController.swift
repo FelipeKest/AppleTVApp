@@ -10,17 +10,36 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, GameDelegate{
+    
+    func returnToMenu(from scene: SKScene) {
+        print("foi o protocol")
+        self.dismiss(animated: false, completion: nil)
+        scene.removeAllChildren()
+    }
+    
+    
+    func presentGameOverView(from scene: SKScene) {
+        DispatchQueue.main.async {
+            let gameOverView = GameOverView(frame: UIScreen.main.bounds, vc: self)
+            self.view.addSubview(gameOverView)
+            
+            scene.removeAllChildren()
+        }
+    }
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
+           if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
-                
+            
+                scene.gameDelegate = self
                 // Present the scene
                 view.presentScene(scene)
             }

@@ -6,12 +6,16 @@
 //  Copyright © 2018 Felipe Kestelman. All rights reserved.
 //
 
+protocol GameDelegate {
+    func returnToMenu(from scene: SKScene)
+}
+
 import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
     
-    private var label : SKLabelNode?
+    //MARK: Variables and Constants
     var scroller: InfiniteScrollingBackground?
     static var isInBattle: Bool! = false
     var firstBattleDone: Bool! = false
@@ -35,6 +39,8 @@ class GameScene: SKScene {
     var alienBaseParticle: SKEmitterNode?
     var boom: SKSpriteNode?
     
+    var gameDelegate: GameDelegate!
+    
     init(battleState: Bool) {
         super.init()
         GameScene.isInBattle = battleState
@@ -45,14 +51,14 @@ class GameScene: SKScene {
         super.init(coder: aDecoder)
     }
     
+    //MARK: Swipe Functions
+    
     @objc func swipeLeft(){
         print("Left: \(leftCard.numberValue)")
         if leftCard.numberValue > rightCard.numberValue {
             // ganha o ponto e da hit no alien
             print("Estudante antes de levar",Student.studentHealth)
             print("Alien antes de levar ",alien.alienHealth)
-            //Attack.increase(alunoLife: &Student.studentHealth, alienLife: &alien.alienHealth, ammount: 1)
-            //leftCard.changeBG(correct: true)
             leftCardBG?.texture = SKTexture(imageNamed: "card_correto")
             print("Estudante da hit = ",Student.studentHealth)
             print("Alien leva hit = ",alien.alienHealth)
@@ -66,13 +72,8 @@ class GameScene: SKScene {
                 self.changeCardValue()
                 
                 Attack.increase(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
-                
-//                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
-//                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
-            })
-            
-
-        }
+                })
+            }
         else {
             print(Student.studentHealth)
             print(alien.alienHealth)
@@ -91,17 +92,14 @@ class GameScene: SKScene {
                 self.changeCardValue()
                 
                 Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
-                
-//                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
-//                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
-            })
+                })
 
+            }
         }
-    }
     
     @objc func swipeRight(){
-        print("Left: \(leftCard.numberValue)")
-        print("Right:")
+        print("Left: \(String(describing: leftCard.numberValue))")
+        print("Right:\(String(describing: rightCard.numberValue))")
         if rightCard.numberValue > leftCard.numberValue {
             // ganha e da hit no alien
             print("Estudante antes de dar =", Student.studentHealth)
@@ -121,12 +119,9 @@ class GameScene: SKScene {
                 self.changeCardValue()
                 
                 Attack.increase(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
-                
-//                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
-//                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
-            })
+                })
             
-        }
+            }
         else {
             print(Student.studentHealth)
             print(alien.alienHealth)
@@ -145,15 +140,14 @@ class GameScene: SKScene {
                 self.changeCardValue()
                 
                 Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
-                
-//                let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
-//                self.playerBeam.size = CGSize(width: beamPiece * Double(Student.studentHealth), height: 80.0)
-            })
+                })
             
-        }
+            }
     }
     
     override func didMove(to view: SKView) {
+        
+        self.view?.isPaused = false
         
         for family in UIFont.familyNames {
             
@@ -223,9 +217,6 @@ class GameScene: SKScene {
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let label = self.label {
-            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-        }
         
         for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
@@ -262,10 +253,10 @@ class GameScene: SKScene {
             let boom = SKSpriteNode(imageNamed: "boom.png")
             boom.position = alien.position
             boom.zPosition = 50
-            boom.size = CGSize(width: 250, height: 180)
+            boom.size = CGSize(width: 220, height: 150)
             self.addChild(boom)
             
-            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { (timer) in
+            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (timer) in
                 boom.removeFromParent()
             })
             
@@ -294,10 +285,12 @@ class GameScene: SKScene {
             })
          
         }
-        if Student.studentHealth == 0 {
-            // game over
-            GameScene.isInBattle = false
-            GameScene.gameOver = true
+        if GameScene.gameOver == true {
+            self.view?.isPaused = true
+            gameDelegate.returnToMenu(from: self)
+            scene?.view?.window?.rootViewController?.dismiss(animated: false, completion: nil)
+            GameScene.gameOver = false
+            Student.studentHealth = 3
         }
     }
     
@@ -310,8 +303,8 @@ class GameScene: SKScene {
         
         player.texture = SKTexture(image: Student.studentImages[2])
         
-        print("LeftValue: \(leftCard.numberValue)")
-        print("RightValue: \(rightCard.numberValue)")
+        print("LeftValue: \(String(describing:leftCard.numberValue))")
+        print("RightValue: \(String(describing: rightCard.numberValue))")
         
         leftCard.convertNumber(value: leftCard.numberValue)
         rightCard.convertNumber(value: rightCard.numberValue)

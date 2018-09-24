@@ -12,6 +12,9 @@
 		6742F830215015C400CF0216 /* TitleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6742F82F215015C300CF0216 /* TitleScene.sks */; };
 		6742F834215016D600CF0216 /* TitleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6742F833215016D600CF0216 /* TitleScreen.swift */; };
 		6776C26F2156B34900176B33 /* hanzipen-sc-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6776C26E2156B34400176B33 /* hanzipen-sc-bold.otf */; };
+		67F6B52A2159563400F7A9F7 /* FocusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F6B5292159563400F7A9F7 /* FocusableButton.swift */; };
+		67F6B52C2159567600F7A9F7 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F6B52B2159567600F7A9F7 /* GameOverScene.swift */; };
+		67F6B52E21595A0300F7A9F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67F6B52D215959BE00F7A9F7 /* Main.storyboard */; };
 		9118ACE8214876DD000693DD /* Alien.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9118ACE5214876DD000693DD /* Alien.swift */; };
 		9118ACE9214876DD000693DD /* Attack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9118ACE6214876DD000693DD /* Attack.swift */; };
 		9118ACEA214876DD000693DD /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9118ACE7214876DD000693DD /* Student.swift */; };
@@ -21,7 +24,6 @@
 		913183AB21308968009A6CF0 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 913183AA21308968009A6CF0 /* Actions.sks */; };
 		913183AD21308968009A6CF0 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913183AC21308968009A6CF0 /* GameScene.swift */; };
 		913183AF21308968009A6CF0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913183AE21308968009A6CF0 /* GameViewController.swift */; };
-		913183B221308968009A6CF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 913183B021308968009A6CF0 /* Main.storyboard */; };
 		913183B42130896A009A6CF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 913183B32130896A009A6CF0 /* Assets.xcassets */; };
 		913183BF2130896A009A6CF0 /* AppleTVGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913183BE2130896A009A6CF0 /* AppleTVGameTests.swift */; };
 		913183CA2130896A009A6CF0 /* AppleTVGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913183C92130896A009A6CF0 /* AppleTVGameUITests.swift */; };
@@ -53,6 +55,9 @@
 		6742F82F215015C300CF0216 /* TitleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TitleScene.sks; sourceTree = "<group>"; };
 		6742F833215016D600CF0216 /* TitleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScreen.swift; sourceTree = "<group>"; };
 		6776C26E2156B34400176B33 /* hanzipen-sc-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hanzipen-sc-bold.otf"; sourceTree = "<group>"; };
+		67F6B5292159563400F7A9F7 /* FocusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusableButton.swift; sourceTree = "<group>"; };
+		67F6B52B2159567600F7A9F7 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		67F6B52D215959BE00F7A9F7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9118ACE5214876DD000693DD /* Alien.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alien.swift; sourceTree = "<group>"; };
 		9118ACE6214876DD000693DD /* Attack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
 		9118ACE7214876DD000693DD /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
@@ -63,7 +68,6 @@
 		913183AA21308968009A6CF0 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		913183AC21308968009A6CF0 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		913183AE21308968009A6CF0 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		913183B121308968009A6CF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		913183B32130896A009A6CF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		913183B52130896A009A6CF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		913183BA2130896A009A6CF0 /* AppleTVGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppleTVGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,7 +109,6 @@
 		9118ACDD2146E4EC000693DD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6742F829214A81A700CF0216 /* NumberCard.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,9 +172,11 @@
 				913183A821308968009A6CF0 /* GameScene.sks */,
 				6742F82F215015C300CF0216 /* TitleScene.sks */,
 				6742F833215016D600CF0216 /* TitleScreen.swift */,
-				913183B021308968009A6CF0 /* Main.storyboard */,
+				67F6B52D215959BE00F7A9F7 /* Main.storyboard */,
 				913183AC21308968009A6CF0 /* GameScene.swift */,
 				6742F82D214AF2FE00CF0216 /* Extensions.swift */,
+				67F6B5292159563400F7A9F7 /* FocusableButton.swift */,
+				67F6B52B2159567600F7A9F7 /* GameOverScene.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 		91C0A85321494A6300495CA0 /* Effects */ = {
 			isa = PBXGroup;
 			children = (
+				6742F829214A81A700CF0216 /* NumberCard.swift */,
 				9118ACE6214876DD000693DD /* Attack.swift */,
 				9118ACEB21487717000693DD /* HitBeam.swift */,
 				6776C26E2156B34400176B33 /* hanzipen-sc-bold.otf */,
@@ -311,10 +317,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				913183B221308968009A6CF0 /* Main.storyboard in Resources */,
 				6776C26F2156B34900176B33 /* hanzipen-sc-bold.otf in Resources */,
 				913183A921308968009A6CF0 /* GameScene.sks in Resources */,
 				91F757FC2149B07B0065C045 /* BeamBaseParticle_Player.sks in Resources */,
+				67F6B52E21595A0300F7A9F7 /* Main.storyboard in Resources */,
 				91F757FD2149B07B0065C045 /* BeamBaseParticle_Alien.sks in Resources */,
 				913183B42130896A009A6CF0 /* Assets.xcassets in Resources */,
 				913183AB21308968009A6CF0 /* Actions.sks in Resources */,
@@ -351,6 +357,8 @@
 				6742F82A214A81A700CF0216 /* NumberCard.swift in Sources */,
 				6742F82E214AF2FE00CF0216 /* Extensions.swift in Sources */,
 				9118ACEA214876DD000693DD /* Student.swift in Sources */,
+				67F6B52C2159567600F7A9F7 /* GameOverScene.swift in Sources */,
+				67F6B52A2159563400F7A9F7 /* FocusableButton.swift in Sources */,
 				913183A721308967009A6CF0 /* AppDelegate.swift in Sources */,
 				9118ACE8214876DD000693DD /* Alien.swift in Sources */,
 				9118ACE9214876DD000693DD /* Attack.swift in Sources */,
@@ -387,17 +395,6 @@
 			targetProxy = 913183C62130896A009A6CF0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		913183B021308968009A6CF0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				913183B121308968009A6CF0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		913183CC2130896A009A6CF0 /* Debug */ = {
