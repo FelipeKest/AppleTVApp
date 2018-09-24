@@ -283,12 +283,13 @@ class GameScene: SKScene {
             Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false, block: { (timer) in
                 self.setUpBattle()
             })
-         
+        }
+        if Student.studentHealth == 0 {
+            GameScene.gameOver = true
         }
         if GameScene.gameOver == true {
             self.view?.isPaused = true
             gameDelegate.returnToMenu(from: self)
-            scene?.view?.window?.rootViewController?.dismiss(animated: false, completion: nil)
             GameScene.gameOver = false
             Student.studentHealth = 3
         }
