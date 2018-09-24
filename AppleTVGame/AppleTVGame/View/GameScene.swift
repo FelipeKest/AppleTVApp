@@ -33,6 +33,7 @@ class GameScene: SKScene {
     public var rightCardText: SKLabelNode?
     var playerBaseParticle: SKEmitterNode?
     var alienBaseParticle: SKEmitterNode?
+    var boom: SKSpriteNode?
     
     init(battleState: Bool) {
         super.init()
@@ -258,10 +259,20 @@ class GameScene: SKScene {
             alienBaseParticle?.removeFromParent()
             playerBaseParticle?.removeFromParent()
             
+            let boom = SKSpriteNode(imageNamed: "boom.png")
+            boom.position = alien.position
+            boom.zPosition = 50
+            boom.size = CGSize(width: 250, height: 180)
+            self.addChild(boom)
+            
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { (timer) in
+                boom.removeFromParent()
+            })
+            
             let spin = SKAction.rotate(byAngle: 1080, duration: 2)
-            let exitScene = SKAction.moveTo(x: 1200, duration: 2)
+            let moveOutOfScene = SKAction.moveTo(x: 1200, duration: 2)
             alien.run(spin)
-            alien.run(exitScene)
+            alien.run(moveOutOfScene)
             
             GameScene.isInBattle = false
             
