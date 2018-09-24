@@ -14,24 +14,14 @@ import GameplayKit
 class GameViewController: UIViewController, GameDelegate{
     
     func returnToMenu(from scene: SKScene) {
-        print("foi o protocol")
         self.dismiss(animated: false, completion: nil)
         scene.removeAllChildren()
-    }
-    
-    func presentGameOverView(from scene: SKScene) {
-        DispatchQueue.main.async {
-            let gameOverView = GameOverView(frame: UIScreen.main.bounds, vc: self)
-            self.view.addSubview(gameOverView)
-            
-            scene.removeAllChildren()
-        }
+        GameOverView.firstTimeBeingPresented = false
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") as? GameScene {

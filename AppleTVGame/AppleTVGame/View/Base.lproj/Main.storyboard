@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Initial View Controller-->
         <scene sceneID="OgH-Ah-fHR">
             <objects>
-                <viewController id="ZSO-Us-RTb" sceneMemberID="viewController">
+                <viewController id="ZSO-Us-RTb" customClass="InitialViewController" customModule="AppleTVGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ULY-FM-esh"/>
                         <viewControllerLayoutGuide type="bottom" id="smI-rh-BJ2"/>
@@ -21,41 +21,34 @@
                     <view key="view" contentMode="scaleToFill" id="HYP-zX-ByH">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBW-rg-wRM">
-                                <rect key="frame" x="530" y="767" width="221" height="86"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="86" id="BRv-0Z-66S"/>
-                                    <constraint firstAttribute="width" constant="221" id="d74-rN-rOM"/>
-                                </constraints>
-                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                <state key="normal" title="Start"/>
-                                <connections>
-                                    <segue destination="499-42-d0g" kind="presentation" identifier="startGame" id="GpV-4Z-7QL"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c55-vN-s8L">
-                                <rect key="frame" x="1169" y="767" width="221" height="86"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="86" id="HMM-xM-BH0"/>
-                                    <constraint firstAttribute="width" constant="221" id="TMU-cr-XUw"/>
-                                </constraints>
-                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                <state key="normal" title="Options"/>
-                            </button>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="c55-vN-s8L" firstAttribute="top" secondItem="ULY-FM-esh" secondAttribute="bottom" constant="707" id="Pn0-Gp-lkp"/>
-                            <constraint firstItem="Fyh-8d-tvn" firstAttribute="trailing" secondItem="c55-vN-s8L" secondAttribute="trailing" constant="440" id="bJg-1D-Koe"/>
-                            <constraint firstItem="GBW-rg-wRM" firstAttribute="top" secondItem="ULY-FM-esh" secondAttribute="bottom" constant="707" id="zEB-mN-ceT"/>
-                            <constraint firstItem="GBW-rg-wRM" firstAttribute="leading" secondItem="Fyh-8d-tvn" secondAttribute="leading" constant="440" id="zPo-BD-ghh"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Fyh-8d-tvn"/>
                     </view>
+                    <connections>
+                        <segue destination="499-42-d0g" kind="show" identifier="startSegue" id="eFt-04-Y8G"/>
+                        <segue destination="Pl4-Kz-4md" kind="show" identifier="optionsSegue" id="2MX-Kc-kxH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="64M-27-zLT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2721" y="69"/>
+            <point key="canvasLocation" x="-2697" y="69"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="zaI-Ej-CQZ">
+            <objects>
+                <viewController id="Pl4-Kz-4md" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8CX-4i-juU"/>
+                        <viewControllerLayoutGuide type="bottom" id="WXE-Er-Hd3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LwD-2h-jtj">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="WgB-aK-y2v"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n15-tJ-wAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2697" y="1914"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="dEh-eV-dlg">
@@ -73,6 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFW-Nd-Df7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="236" y="69"/>
         </scene>
     </scenes>
 </document>

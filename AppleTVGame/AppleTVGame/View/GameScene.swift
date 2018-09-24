@@ -11,7 +11,6 @@ import GameplayKit
 
 protocol GameDelegate {
     func returnToMenu(from scene: SKScene)
-    func presentGameOverView(from scene: SKScene)
 }
 
 class GameScene: SKScene {
@@ -246,7 +245,8 @@ class GameScene: SKScene {
         if GameScene.gameOver == true {
             //Chamar uma view
             self.view?.isPaused = true
-            gameDelegate.presentGameOverView(from: self)
+    
+            gameDelegate.returnToMenu(from: self)
             self.player.studentHealth = 3
             
         }
