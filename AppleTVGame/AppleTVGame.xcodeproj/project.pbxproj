@@ -12,6 +12,10 @@
 		6742F830215015C400CF0216 /* TitleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6742F82F215015C300CF0216 /* TitleScene.sks */; };
 		6742F834215016D600CF0216 /* TitleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6742F833215016D600CF0216 /* TitleScreen.swift */; };
 		6776C26F2156B34900176B33 /* hanzipen-sc-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6776C26E2156B34400176B33 /* hanzipen-sc-bold.otf */; };
+		67C78A3B215D42DD00910642 /* beamRelease.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 67D98B13215D3ACD00889379 /* beamRelease.mp3 */; };
+		67C78A3D215D4EA000910642 /* beamLoop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 67C78A3C215D4EA000910642 /* beamLoop.mp3 */; };
+		67C78A3F215D4EB300910642 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 913183B32130896A009A6CF0 /* Assets.xcassets */; };
+		67D98B12215D3A6700889379 /* AudioSetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D98B11215D3A6700889379 /* AudioSetUp.swift */; };
 		67F6B52A2159563400F7A9F7 /* FocusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F6B5292159563400F7A9F7 /* FocusableButton.swift */; };
 		67F6B52C2159567600F7A9F7 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F6B52B2159567600F7A9F7 /* GameOverScene.swift */; };
 		67F6B52E21595A0300F7A9F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67F6B52D215959BE00F7A9F7 /* Main.storyboard */; };
@@ -24,7 +28,6 @@
 		913183AB21308968009A6CF0 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 913183AA21308968009A6CF0 /* Actions.sks */; };
 		913183AD21308968009A6CF0 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913183AC21308968009A6CF0 /* GameScene.swift */; };
 		913183AF21308968009A6CF0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913183AE21308968009A6CF0 /* GameViewController.swift */; };
-		913183B42130896A009A6CF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 913183B32130896A009A6CF0 /* Assets.xcassets */; };
 		913183BF2130896A009A6CF0 /* AppleTVGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913183BE2130896A009A6CF0 /* AppleTVGameTests.swift */; };
 		913183CA2130896A009A6CF0 /* AppleTVGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913183C92130896A009A6CF0 /* AppleTVGameUITests.swift */; };
 		91ADC72721408A9000946C92 /* InfiniteScrollingBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ADC72621408A8F00946C92 /* InfiniteScrollingBackground.swift */; };
@@ -55,6 +58,9 @@
 		6742F82F215015C300CF0216 /* TitleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TitleScene.sks; sourceTree = "<group>"; };
 		6742F833215016D600CF0216 /* TitleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScreen.swift; sourceTree = "<group>"; };
 		6776C26E2156B34400176B33 /* hanzipen-sc-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hanzipen-sc-bold.otf"; sourceTree = "<group>"; };
+		67C78A3C215D4EA000910642 /* beamLoop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beamLoop.mp3; sourceTree = "<group>"; };
+		67D98B11215D3A6700889379 /* AudioSetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSetUp.swift; sourceTree = "<group>"; };
+		67D98B13215D3ACD00889379 /* beamRelease.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beamRelease.mp3; sourceTree = "<group>"; };
 		67F6B5292159563400F7A9F7 /* FocusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusableButton.swift; sourceTree = "<group>"; };
 		67F6B52B2159567600F7A9F7 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		67F6B52D215959BE00F7A9F7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -106,6 +112,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67D98B10215D3A3A00889379 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				67C78A3C215D4EA000910642 /* beamLoop.mp3 */,
+				67D98B13215D3ACD00889379 /* beamRelease.mp3 */,
+				67D98B11215D3A6700889379 /* AudioSetUp.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 		9118ACDD2146E4EC000693DD /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +187,7 @@
 				91C0A85321494A6300495CA0 /* Effects */,
 				913183A821308968009A6CF0 /* GameScene.sks */,
 				6742F82F215015C300CF0216 /* TitleScene.sks */,
+				67D98B10215D3A3A00889379 /* Audio */,
 				6742F833215016D600CF0216 /* TitleScreen.swift */,
 				67F6B52D215959BE00F7A9F7 /* Main.storyboard */,
 				913183AC21308968009A6CF0 /* GameScene.swift */,
@@ -318,11 +335,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6776C26F2156B34900176B33 /* hanzipen-sc-bold.otf in Resources */,
+				67C78A3D215D4EA000910642 /* beamLoop.mp3 in Resources */,
 				913183A921308968009A6CF0 /* GameScene.sks in Resources */,
 				91F757FC2149B07B0065C045 /* BeamBaseParticle_Player.sks in Resources */,
+				67C78A3F215D4EB300910642 /* Assets.xcassets in Resources */,
+				67C78A3B215D42DD00910642 /* beamRelease.mp3 in Resources */,
 				67F6B52E21595A0300F7A9F7 /* Main.storyboard in Resources */,
 				91F757FD2149B07B0065C045 /* BeamBaseParticle_Alien.sks in Resources */,
-				913183B42130896A009A6CF0 /* Assets.xcassets in Resources */,
 				913183AB21308968009A6CF0 /* Actions.sks in Resources */,
 				6742F830215015C400CF0216 /* TitleScene.sks in Resources */,
 			);
@@ -359,6 +378,7 @@
 				9118ACEA214876DD000693DD /* Student.swift in Sources */,
 				67F6B52C2159567600F7A9F7 /* GameOverScene.swift in Sources */,
 				67F6B52A2159563400F7A9F7 /* FocusableButton.swift in Sources */,
+				67D98B12215D3A6700889379 /* AudioSetUp.swift in Sources */,
 				913183A721308967009A6CF0 /* AppDelegate.swift in Sources */,
 				9118ACE8214876DD000693DD /* Alien.swift in Sources */,
 				9118ACE9214876DD000693DD /* Attack.swift in Sources */,

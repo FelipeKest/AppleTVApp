@@ -12,6 +12,7 @@ protocol GameDelegate {
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class GameScene: SKScene {
     
@@ -38,6 +39,8 @@ class GameScene: SKScene {
     var playerBaseParticle: SKEmitterNode?
     var alienBaseParticle: SKEmitterNode?
     var boom: SKSpriteNode?
+    
+    var audio: AudioSetUpDelegate!
     
     var gameDelegate: GameDelegate!
     
@@ -147,6 +150,8 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        audio = AudioSetUp()
+        
         self.view?.isPaused = false
         
         for family in UIFont.familyNames {
@@ -249,6 +254,8 @@ class GameScene: SKScene {
             rightCardText?.removeFromParent()
             alienBaseParticle?.removeFromParent()
             playerBaseParticle?.removeFromParent()
+            
+            self.audio.beamLoopAudio(stop: true)
             
             let boom = SKSpriteNode(imageNamed: "boom.png")
             boom.position = alien.position
@@ -355,10 +362,16 @@ class GameScene: SKScene {
             
             self.addChild(self.playerBeam)
             
+            self.audio.beamStartAudio()
+            
             beamAppearing = SKAction.fadeAlpha(to: 1, duration: 1)
             self.playerBeam.run(beamAppearing)
             self.alienBeam.run(beamAppearing)
             
+        })
+        
+        Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false, block: { (timer) in
+            self.audio.beamLoopAudio(stop: false)
         })
         
         Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { (timer) in
