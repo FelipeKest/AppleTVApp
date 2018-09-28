@@ -12,9 +12,17 @@
 		6742F830215015C400CF0216 /* TitleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6742F82F215015C300CF0216 /* TitleScene.sks */; };
 		6742F834215016D600CF0216 /* TitleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6742F833215016D600CF0216 /* TitleScreen.swift */; };
 		6776C26F2156B34900176B33 /* hanzipen-sc-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6776C26E2156B34400176B33 /* hanzipen-sc-bold.otf */; };
+		67928047215DD93800D7057B /* alien_defeated.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 67928045215DD93200D7057B /* alien_defeated.mp3 */; };
+		67928048215DD93B00D7057B /* alien_growl.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 67928046215DD93300D7057B /* alien_growl.mp3 */; };
+		6792804A215DF64A00D7057B /* nonstop_numbers_theme_short.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 67928049215DF64A00D7057B /* nonstop_numbers_theme_short.mp3 */; };
+		6792804C215DF73C00D7057B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6792804B215DF73C00D7057B /* MenuViewController.swift */; };
+		6792804E215E0E2E00D7057B /* nonstop_numbers_battle_theme_short.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6792804D215E0E2E00D7057B /* nonstop_numbers_battle_theme_short.mp3 */; };
+		67928052215E385E00D7057B /* right_card_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6792804F215E385E00D7057B /* right_card_sound.mp3 */; };
+		67928054215E385E00D7057B /* wrong_card_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 67928051215E385E00D7057B /* wrong_card_sound.mp3 */; };
 		67C78A3B215D42DD00910642 /* beamRelease.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 67D98B13215D3ACD00889379 /* beamRelease.mp3 */; };
 		67C78A3D215D4EA000910642 /* beamLoop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 67C78A3C215D4EA000910642 /* beamLoop.mp3 */; };
 		67C78A3F215D4EB300910642 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 913183B32130896A009A6CF0 /* Assets.xcassets */; };
+		67CC1190215E41710081B712 /* battle_won.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 67CC118F215E41710081B712 /* battle_won.mp3 */; };
 		67D98B12215D3A6700889379 /* AudioSetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D98B11215D3A6700889379 /* AudioSetUp.swift */; };
 		67F6B52A2159563400F7A9F7 /* FocusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F6B5292159563400F7A9F7 /* FocusableButton.swift */; };
 		67F6B52C2159567600F7A9F7 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F6B52B2159567600F7A9F7 /* GameOverScene.swift */; };
@@ -58,7 +66,15 @@
 		6742F82F215015C300CF0216 /* TitleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TitleScene.sks; sourceTree = "<group>"; };
 		6742F833215016D600CF0216 /* TitleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScreen.swift; sourceTree = "<group>"; };
 		6776C26E2156B34400176B33 /* hanzipen-sc-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hanzipen-sc-bold.otf"; sourceTree = "<group>"; };
+		67928045215DD93200D7057B /* alien_defeated.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alien_defeated.mp3; sourceTree = "<group>"; };
+		67928046215DD93300D7057B /* alien_growl.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alien_growl.mp3; sourceTree = "<group>"; };
+		67928049215DF64A00D7057B /* nonstop_numbers_theme_short.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nonstop_numbers_theme_short.mp3; sourceTree = "<group>"; };
+		6792804B215DF73C00D7057B /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		6792804D215E0E2E00D7057B /* nonstop_numbers_battle_theme_short.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nonstop_numbers_battle_theme_short.mp3; sourceTree = "<group>"; };
+		6792804F215E385E00D7057B /* right_card_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = right_card_sound.mp3; sourceTree = "<group>"; };
+		67928051215E385E00D7057B /* wrong_card_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wrong_card_sound.mp3; sourceTree = "<group>"; };
 		67C78A3C215D4EA000910642 /* beamLoop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beamLoop.mp3; sourceTree = "<group>"; };
+		67CC118F215E41710081B712 /* battle_won.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = battle_won.mp3; sourceTree = "<group>"; };
 		67D98B11215D3A6700889379 /* AudioSetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSetUp.swift; sourceTree = "<group>"; };
 		67D98B13215D3ACD00889379 /* beamRelease.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beamRelease.mp3; sourceTree = "<group>"; };
 		67F6B5292159563400F7A9F7 /* FocusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusableButton.swift; sourceTree = "<group>"; };
@@ -115,6 +131,13 @@
 		67D98B10215D3A3A00889379 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				67CC118F215E41710081B712 /* battle_won.mp3 */,
+				6792804F215E385E00D7057B /* right_card_sound.mp3 */,
+				67928051215E385E00D7057B /* wrong_card_sound.mp3 */,
+				6792804D215E0E2E00D7057B /* nonstop_numbers_battle_theme_short.mp3 */,
+				67928049215DF64A00D7057B /* nonstop_numbers_theme_short.mp3 */,
+				67928045215DD93200D7057B /* alien_defeated.mp3 */,
+				67928046215DD93300D7057B /* alien_growl.mp3 */,
 				67C78A3C215D4EA000910642 /* beamLoop.mp3 */,
 				67D98B13215D3ACD00889379 /* beamRelease.mp3 */,
 				67D98B11215D3A6700889379 /* AudioSetUp.swift */,
@@ -201,6 +224,7 @@
 		91ADC72521407DB500946C92 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6792804B215DF73C00D7057B /* MenuViewController.swift */,
 				913183AE21308968009A6CF0 /* GameViewController.swift */,
 			);
 			path = Controller;
@@ -334,15 +358,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6792804E215E0E2E00D7057B /* nonstop_numbers_battle_theme_short.mp3 in Resources */,
 				6776C26F2156B34900176B33 /* hanzipen-sc-bold.otf in Resources */,
+				67928054215E385E00D7057B /* wrong_card_sound.mp3 in Resources */,
 				67C78A3D215D4EA000910642 /* beamLoop.mp3 in Resources */,
 				913183A921308968009A6CF0 /* GameScene.sks in Resources */,
 				91F757FC2149B07B0065C045 /* BeamBaseParticle_Player.sks in Resources */,
 				67C78A3F215D4EB300910642 /* Assets.xcassets in Resources */,
+				67928047215DD93800D7057B /* alien_defeated.mp3 in Resources */,
 				67C78A3B215D42DD00910642 /* beamRelease.mp3 in Resources */,
 				67F6B52E21595A0300F7A9F7 /* Main.storyboard in Resources */,
+				67CC1190215E41710081B712 /* battle_won.mp3 in Resources */,
+				67928048215DD93B00D7057B /* alien_growl.mp3 in Resources */,
+				67928052215E385E00D7057B /* right_card_sound.mp3 in Resources */,
 				91F757FD2149B07B0065C045 /* BeamBaseParticle_Alien.sks in Resources */,
 				913183AB21308968009A6CF0 /* Actions.sks in Resources */,
+				6792804A215DF64A00D7057B /* nonstop_numbers_theme_short.mp3 in Resources */,
 				6742F830215015C400CF0216 /* TitleScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,6 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				913183AD21308968009A6CF0 /* GameScene.swift in Sources */,
+				6792804C215DF73C00D7057B /* MenuViewController.swift in Sources */,
 				91ADC72721408A9000946C92 /* InfiniteScrollingBackground.swift in Sources */,
 				6742F834215016D600CF0216 /* TitleScreen.swift in Sources */,
 				9118ACEC21487717000693DD /* HitBeam.swift in Sources */,

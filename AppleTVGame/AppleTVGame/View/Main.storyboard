@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="OgH-Ah-fHR">
             <objects>
-                <viewController id="ZSO-Us-RTb" sceneMemberID="viewController">
+                <viewController id="ZSO-Us-RTb" customClass="MenuViewController" customModule="AppleTVGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ULY-FM-esh"/>
                         <viewControllerLayoutGuide type="bottom" id="smI-rh-BJ2"/>
@@ -73,15 +73,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rR3-h4-96B">
-                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.24435179371389787" green="0.21091043773674498" blue="0.27769603779840846" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tT7-mr-Klt">
                                 <rect key="frame" x="96" y="-36" width="1741" height="613"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <mutableString key="text">Aliens have invaded your school! Their plan is to steal all the human knowledge so they can conquer the human race without resistance! But, one of the aliens drops a mysterious crystal while descending from its ship, and you stumble across it in the school's playground right before the attack begins. Moved by curiosity and by the sheer beauty of the object, you pick it up, and you discover that it is the source of the aliens' powers! It is called Crystelligent and it gives you the ability to manipulate the flow of knowledge of the planet, and you must use this newly acquired power to defeat the aliens and save the day!</mutableString>
+                                <string key="text">Aliens have invaded your school! Their plan is to steal all the human knowledge so they can conquer the human race without resistance! But, one of the aliens drops a mysterious crystal while descending from its ship, and you stumble across it in the school's playground right before the attack begins. Moved by curiosity and by the sheer beauty of the object, you pick it up, and you discover that it is the source of the aliens' powers! It is called Crystelligent and it gives you the ability to manipulate the flow of knowledge of the planet, and you must use this newly acquired power to defeat the aliens and save the day!</string>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="50"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>

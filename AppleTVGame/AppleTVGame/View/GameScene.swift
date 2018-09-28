@@ -39,6 +39,8 @@ class GameScene: SKScene {
     var playerBaseParticle: SKEmitterNode?
     var alienBaseParticle: SKEmitterNode?
     var boom: SKSpriteNode?
+    var timeBar: SKSpriteNode?
+    var timeRunning: Bool! = false
     
     var audio: AudioSetUpDelegate!
     
@@ -71,8 +73,16 @@ class GameScene: SKScene {
             
             self.playerBeam.run(beamGrow)
             
+            self.audio.rightCardAudio()
+            
+            self.timeBar?.removeAllActions()
+            
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
                 self.changeCardValue()
+                
+                self.timeBar?.removeAllActions()
+                self.timeBar?.removeFromParent()
+                self.runTimer()
                 
                 Attack.increase(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
                 })
@@ -91,8 +101,16 @@ class GameScene: SKScene {
             
             self.playerBeam.run(beamShrink)
             
+            self.audio.wrongCardAudio()
+            
+            self.timeBar?.removeAllActions()
+            
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
                 self.changeCardValue()
+                
+                self.timeBar?.removeAllActions()
+                self.timeBar?.removeFromParent()
+                self.runTimer()
                 
                 Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
                 })
@@ -118,8 +136,15 @@ class GameScene: SKScene {
             
             self.playerBeam.run(beamGrow)
             
+            self.audio.rightCardAudio()
+            
+            self.timeBar?.removeAllActions()
+            
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
                 self.changeCardValue()
+        
+                self.timeBar?.removeFromParent()
+                self.runTimer()
                 
                 Attack.increase(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
                 })
@@ -139,8 +164,15 @@ class GameScene: SKScene {
             
             self.playerBeam.run(beamShrink)
             
+            self.audio.wrongCardAudio()
+            
+            self.timeBar?.removeAllActions()
+            
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
                 self.changeCardValue()
+
+                self.timeBar?.removeFromParent()
+                self.runTimer()
                 
                 Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
                 })
@@ -151,6 +183,8 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         
         audio = AudioSetUp()
+        
+        audio.battleSongAudio(stop: false)
         
         self.view?.isPaused = false
         
@@ -265,12 +299,15 @@ class GameScene: SKScene {
             
             Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (timer) in
                 boom.removeFromParent()
+                self.audio.battleWonAudio()
             })
             
             let spin = SKAction.rotate(byAngle: 1080, duration: 2)
             let moveOutOfScene = SKAction.moveTo(x: 1200, duration: 2)
             alien.run(spin)
             alien.run(moveOutOfScene)
+            
+            self.audio.alienDefeatedAudio()
             
             GameScene.isInBattle = false
             
@@ -282,6 +319,9 @@ class GameScene: SKScene {
             
             playerRun()
             
+            self.timeBar?.removeAllActions()
+            self.timeBar?.removeFromParent()
+            
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
                 self.alien.removeAllActions()
                 self.alien.removeFromParent()
@@ -291,17 +331,50 @@ class GameScene: SKScene {
                 self.setUpBattle()
             })
         }
+        
+        
         if Student.studentHealth == 0 {
             GameScene.gameOver = true
         }
+        
+        
         if GameScene.gameOver == true {
             self.view?.isPaused = true
+            self.audio.battleSongAudio(stop: true)
+            self.audio.beamLoopAudio(stop: true)
             gameDelegate.returnToMenu(from: self)
             GameScene.gameOver = false
             Student.studentHealth = 3
         }
+        
+        if self.timeBar?.size.width == 0 && timeRunning == true{
+            print(Student.studentHealth)
+            print(alien.alienHealth)
+            
+            let beamPiece = self.distanceBetween / Double(Student.studentHealth + self.alien.alienHealth)
+            let beamShrink = SKAction.resize(toWidth: CGFloat(beamPiece * Double((Student.studentHealth)-1)), duration: 0.5)
+            
+            self.playerBeam.run(beamShrink)
+            
+            rightCardBG?.texture = SKTexture(imageNamed: "card_errado")
+            leftCardBG?.texture = SKTexture(imageNamed: "card_errado")
+            
+            self.audio.wrongCardAudio()
+            
+            timeRunning = false
+            
+            Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
+                self.changeCardValue()
+                
+                self.timeBar?.removeAllActions()
+                self.timeBar?.removeFromParent()
+                self.runTimer()
+                
+                Attack.decrease(alunoLife: &Student.studentHealth, alienLife: &self.alien.alienHealth, ammount: 1)
+            })
+
+        }
     }
-    
     
     
     func setUpBattle () {
@@ -328,6 +401,7 @@ class GameScene: SKScene {
         alienAnimation = SKAction.move(to: CGPoint(x: 300.0, y: alien.position.y), duration: 1)
         alien.run(alienAnimation)
         
+        self.audio.alienAppearsAudio()
         
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { (timer) in
             
@@ -412,6 +486,8 @@ class GameScene: SKScene {
             self.rightCardText?.fontColor = #colorLiteral(red: 0.262745098, green: 0.262745098, blue: 0.262745098, alpha: 1)
             self.rightCardText?.position = CGPoint(x: (self.rightCardBG?.position.x)!, y: (self.rightCardBG?.position.y)! - 10)
             self.addChild(self.rightCardText!)
+
+            self.runTimer()
             
         })
         
@@ -445,5 +521,20 @@ class GameScene: SKScene {
         let runningAction = SKAction.animate(with: runningFrames, timePerFrame: 0.2)
         let runningForever = SKAction.repeatForever(runningAction)
         self.player.run(runningForever)
+    }
+    
+    func runTimer () {
+        let shrink = SKAction.resize(toWidth: 0, duration: 4)
+        
+        timeBar = SKSpriteNode(imageNamed: "timebar.png")
+        timeBar?.zPosition = 51
+        timeBar?.size = CGSize(width: 1000, height: 30)
+        timeBar?.anchorPoint = CGPoint(x: 0.0, y: 0.5)
+        timeBar?.position = CGPoint(x: -512, y: 290)
+        
+        timeRunning = true
+        
+        addChild(self.timeBar!)
+        timeBar?.run(shrink)
     }
 }
