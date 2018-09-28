@@ -199,7 +199,7 @@ class GameScene: SKScene {
         }
         
         //define quais imagens são utilizadas no background
-        let backgroundimages = [UIImage(named: "bg1")!, UIImage(named: "bg2")!]
+        let backgroundimages = [UIImage(named: "bg1")!, UIImage(named: "bg2")!, UIImage(named: "bg3")!, UIImage(named: "bg4")!, UIImage(named: "bg5")!]
         
         self.swipeLeftInstance = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.swipeLeft))
         self.swipeLeftInstance?.direction = .left
