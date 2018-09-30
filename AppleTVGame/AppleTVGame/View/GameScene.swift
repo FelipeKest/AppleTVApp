@@ -46,6 +46,8 @@ class GameScene: SKScene {
     
     var gameDelegate: GameDelegate!
     
+    var canSwipe: Bool = false
+    
     init(battleState: Bool) {
         super.init()
         GameScene.isInBattle = battleState
@@ -59,6 +61,9 @@ class GameScene: SKScene {
     //MARK: Swipe Functions
     
     @objc func swipeLeft(){
+        
+        if canSwipe == true {
+        
         print("Left: \(leftCard.numberValue)")
         if leftCard.numberValue > rightCard.numberValue {
             // ganha o ponto e da hit no alien
@@ -117,8 +122,15 @@ class GameScene: SKScene {
 
             }
         }
+        
+        self.canSwipe = false
+        
+    }
     
     @objc func swipeRight(){
+        
+        if canSwipe == true {
+        
         print("Left: \(String(describing: leftCard.numberValue))")
         print("Right:\(String(describing: rightCard.numberValue))")
         if rightCard.numberValue > leftCard.numberValue {
@@ -178,6 +190,10 @@ class GameScene: SKScene {
                 })
             
             }
+        }
+        
+        self.canSwipe = false
+        
     }
     
     override func didMove(to view: SKView) {
@@ -330,6 +346,8 @@ class GameScene: SKScene {
             Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false, block: { (timer) in
                 self.setUpBattle()
             })
+            
+            self.canSwipe = false
         }
         
         
@@ -489,6 +507,8 @@ class GameScene: SKScene {
 
             self.runTimer()
             
+            self.canSwipe = true
+            
         })
         
         cardsNeeded = false
@@ -512,6 +532,8 @@ class GameScene: SKScene {
         
         leftCardText?.text = leftCard.numberDisplay
         rightCardText?.text = rightCard.numberDisplay
+        
+        self.canSwipe = true
         
         
     }
