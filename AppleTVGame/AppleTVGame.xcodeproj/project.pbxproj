@@ -568,13 +568,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 93LU37KCD9;
+				DEVELOPMENT_TEAM = MQCZXY3BDQ;
 				INFOPLIST_FILE = AppleTVGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = AppleTVGame.AppleTVGame;
+				PRODUCT_BUNDLE_IDENTIFIER = nonstopNumbers.AppleTVGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -587,13 +587,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 93LU37KCD9;
+				DEVELOPMENT_TEAM = MQCZXY3BDQ;
 				INFOPLIST_FILE = AppleTVGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = AppleTVGame.AppleTVGame;
+				PRODUCT_BUNDLE_IDENTIFIER = nonstopNumbers.AppleTVGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;

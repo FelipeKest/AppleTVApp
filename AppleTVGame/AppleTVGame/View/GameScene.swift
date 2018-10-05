@@ -550,9 +550,9 @@ class GameScene: SKScene {
         
         timeBar = SKSpriteNode(imageNamed: "timebar.png")
         timeBar?.zPosition = 51
-        timeBar?.size = CGSize(width: 1000, height: 30)
+        timeBar?.size = CGSize(width: 1000, height: 15)
         timeBar?.anchorPoint = CGPoint(x: 0.0, y: 0.5)
-        timeBar?.position = CGPoint(x: -512, y: 290)
+        timeBar?.position = CGPoint(x: -512, y: 270)
         
         timeRunning = true
         
